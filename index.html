@@ -153,6 +153,17 @@ mark{background:var(--mark);color:var(--mark-ink);padding:0 3px;border-radius:4p
 .pct{font-family:var(--serif);font-size:26px;font-weight:700;line-height:1}
 details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
 .code{font-weight:700;letter-spacing:.5px}
+.tbl{width:100%;border-collapse:separate;border-spacing:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:16px}
+.tbl th,.tbl td{padding:10px 10px;border-bottom:1px solid var(--line);text-align:left}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th{font-size:13px;color:var(--muted);font-weight:650;background:var(--bg)}
+.tbl td.n{width:34px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tbl td.r{text-align:right;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tbl tr.miss td{background:var(--bad-bg)}
+.tbl tr.miss td.r{color:var(--bad);font-weight:650}
+.tbl .g{color:var(--muted);font-size:13px}
+.sum{display:flex;justify-content:space-between;font-size:15px;margin:0 2px 8px;color:var(--muted)}
+.sum b{color:var(--ink)}
 .empty{text-align:center;color:var(--muted);padding:26px 10px}
 .deco{text-align:center;margin-top:34px;color:var(--muted)}
 .deco svg{display:block;margin:0 auto 6px;width:96px;height:auto}
@@ -320,13 +331,15 @@ details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
     <h1>Müəllim paneli</h1>
     <div class="stats"><div><b id="t-scount">0</b><span class="small muted">şagird</span></div><div><b id="t-rcount">0</b><span class="small muted">nəticə</span></div><div><b id="t-bcount">0</b><span class="small muted">bloklu</span></div></div>
     <div class="tabs" role="tablist">
-      <button role="tab" aria-selected="true" data-tab="students">Şagirdlər</button>
+      <button role="tab" aria-selected="true" data-tab="table">Cədvəl</button>
+      <button role="tab" aria-selected="false" data-tab="students">Şagirdlər</button>
       <button role="tab" aria-selected="false" data-tab="results">Nəticələr</button>
     </div>
     <div class="filters">
       <select id="t-group" aria-label="Qrup"><option value="">Bütün qruplar</option></select>
-      <input id="t-search" type="search" placeholder="Ad və ya nömrə" aria-label="Axtar">
+      <input id="t-search" type="search" placeholder="Ad axtar" aria-label="Axtar">
     </div>
+    <select id="t-test" aria-label="Test" style="width:100%;padding:11px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);margin-bottom:12px;font-weight:650"></select>
     <div id="t-list"></div>
     <p style="text-align:center;margin-top:20px"><button class="link" id="t-logout">Paneldən çıx (şifrəni unut)</button></p>
   </section>
@@ -722,7 +735,7 @@ $("#res-redo").addEventListener("click", async () => {
 });
 
 /* ---------- Müəllim paneli ---------- */
-let T = null, tTab = "students";
+let T = null, tTab = "table";
 $("#t-form").addEventListener("submit", async e => {
   e.preventDefault();
   const pw = $("#t-pass").value; $("#t-err").textContent = "";
@@ -740,32 +753,56 @@ async function loadTeacher(pw){
   sel.value = groups.includes(keep) ? keep : "";
   renderTeacher();
 }
+const shortName = s => `${s.name} ${(s.surname || "").trim().charAt(0).toLocaleUpperCase("az")}.`;
+const typeName = (t, r) => t === "vocab" ? ((TEXTS.vocab_title || "Vocabulary") + " " + ((r && r.set) || "")).trim() : (TEXTS.grammar_title || "Grammar");
+const testKey = r => r.type === "vocab" ? "vocab|" + (r.set || "") : "grammar|";
+function testOptions(){
+  const opts = setsList().map(s => ["vocab|" + s, `${TEXTS.vocab_title || "Vocabulary"} ${s}`]);
+  if (GRAMMAR.length || T.results.some(r => r.type === "grammar")) opts.push(["grammar|", TEXTS.grammar_title || "Grammar Test"]);
+  T.results.forEach(r => { const k = testKey(r); if (!opts.some(o => o[0] === k)) opts.push([k, typeName(r.type, r)]); });
+  return opts;
+}
 function renderTeacher(){
   $("#t-scount").textContent = T.students.length;
   $("#t-rcount").textContent = T.results.length;
   $("#t-bcount").textContent = T.students.filter(s => s.status === "blok").length;
   const g = $("#t-group").value, q = $("#t-search").value.trim().toLowerCase();
-  const match = x => (!g || x.group === g) && (!q || `${x.name} ${x.surname} ${x.phone}`.toLowerCase().includes(q.replace(/\s/g, "")) || `${x.name} ${x.surname}`.toLowerCase().includes(q));
-  const typeName = (t, r) => t === "vocab" ? ("Vocabulary " + ((r && r.set) || "")).trim() : "Grammar";
-  const resRow = r => `<div class="row"><div class="top"><div><div class="name">${esc(r.name)} ${esc(r.surname)}</div><div class="meta">${esc(r.group)} · ${esc(typeName(r.type, r))} · ${esc(r.date)}</div></div><div style="text-align:right"><div class="pct">${r.score}/${r.total}</div><div class="meta">${r.total ? Math.round(r.score / r.total * 100) : 0}%</div></div></div>
-    <div class="meta">Yoxlama kodu: <span class="code">#${esc(r.code)}</span>${r.note ? ` · <span style="color:var(--bad)">${esc(r.note)}</span>` : ""}</div>
-    ${r.wrong ? `<details><summary>Səhvlər</summary><div class="meta" style="margin-top:6px">${esc(r.wrong)}</div></details>` : ""}</div>`;
+  const match = x => (!g || x.group === g) && (!q || `${x.name} ${x.surname}`.toLowerCase().includes(q));
+  const ts = $("#t-test"); ts.hidden = tTab !== "table";
+  const opts = testOptions(), keep = ts.value;
+  ts.innerHTML = opts.map(([k, l]) => `<option value="${esc(k)}">${esc(l)}</option>`).join("");
+  if (opts.some(o => o[0] === keep)) ts.value = keep;
   let html = "";
-  if (tTab === "students"){
+  if (tTab === "table"){
+    const key = ts.value;
+    const list = T.students.filter(match).slice().sort((a, b) => (a.name + a.surname).localeCompare(b.name + b.surname, "az"));
+    let done = 0;
+    const rows = list.map((s, i) => {
+      const rs = T.results.filter(r => r.phone === s.phone && testKey(r) === key); // ən yenisi birinci gəlir
+      const last = rs[0]; if (last) done++;
+      const extra = rs.length > 1 ? ` <span class="g">(${rs.length} dəfə)</span>` : "";
+      return `<tr class="${last ? "" : "miss"}"><td class="n">${i + 1}</td><td>${esc(shortName(s))}${!g ? ` <span class="g">${esc(s.group)}</span>` : ""}${s.status === "blok" ? ` <span class="g">bloklu</span>` : ""}</td>
+        <td class="r">${last ? `${last.score}/${last.total}${extra}` : "İşləməyib"}</td></tr>`;
+    }).join("");
+    html = list.length ? `<div class="sum"><span>İşləyib: <b>${done}</b> / ${list.length}</span><span>İşləməyib: <b>${list.length - done}</b></span></div>
+      <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>№</th><th>Şagird</th><th style="text-align:right">Nəticə</th></tr></thead><tbody>${rows}</tbody></table></div>`
+      : `<div class="empty">${g ? "Bu qrupda" : "Hələ"} qeydiyyatdan keçən şagird yoxdur.</div>`;
+  } else if (tTab === "students"){
     const list = T.students.filter(match);
     html = list.length ? list.map(s => {
       const rs = T.results.filter(r => r.phone === s.phone);
       return `<div class="row"><div class="top"><div><div class="name">${esc(s.name)} ${esc(s.surname)}</div>
-        <div class="meta">${esc(s.group)} · <a href="tel:${esc(s.phone)}">${fmtPhone(s.phone)}</a></div>
-        <div class="meta">Qeydiyyat: ${esc(s.date)} · ${rs.length} nəticə</div></div>
+        <div class="meta">${esc(s.group)} · Qeydiyyat: ${esc(s.date)} · ${rs.length} nəticə</div></div>
         <span class="st ${s.status}">${s.status === "blok" ? "Bloklu" : "Aktiv"}</span></div>
         <button class="mini ${s.status === "blok" ? "" : "danger"}" data-block="${esc(s.phone)}" data-to="${s.status === "blok" ? "aktiv" : "blok"}">${s.status === "blok" ? "Blokdan çıxar" : "Blok et"}</button>
-        ${rs.length ? `<details><summary>Nəticələrə bax</summary>${rs.map(r => `<div class="meta" style="margin-top:6px">${esc(typeName(r.type, r))}: <b>${r.score}/${r.total}</b> · ${esc(r.date)} · #${esc(r.code)}</div>`).join("")}</details>` : ""}
+        ${rs.length ? `<details><summary>Nəticələrə bax</summary>${rs.map(r => `<div class="meta" style="margin-top:6px">${esc(typeName(r.type, r))}: <b>${r.score}/${r.total}</b> · ${esc(r.date)}</div>`).join("")}</details>` : ""}
       </div>`;
     }).join("") : `<div class="empty">Hələ qeydiyyatdan keçən şagird yoxdur.</div>`;
   } else {
     const list = T.results.filter(match);
-    html = list.length ? list.map(resRow).join("") : `<div class="empty">Hələ göndərilən nəticə yoxdur.</div>`;
+    html = list.length ? list.map(r => `<div class="row"><div class="top"><div><div class="name">${esc(r.name)} ${esc(r.surname)}</div><div class="meta">${esc(r.group)} · ${esc(typeName(r.type, r))} · ${esc(r.date)}</div></div><div style="text-align:right"><div class="pct">${r.score}/${r.total}</div><div class="meta">${r.total ? Math.round(r.score / r.total * 100) : 0}%</div></div></div>
+      ${r.note ? `<div class="meta" style="color:var(--bad)">${esc(r.note)}</div>` : ""}
+      ${r.wrong ? `<details><summary>Səhvlər</summary><div class="meta" style="margin-top:6px">${esc(r.wrong)}</div></details>` : ""}</div>`).join("") : `<div class="empty">Hələ yadda saxlanan nəticə yoxdur.</div>`;
   }
   $("#t-list").innerHTML = html;
 }
@@ -773,6 +810,7 @@ document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click",
   tTab = b.dataset.tab; document.querySelectorAll("[data-tab]").forEach(x => x.setAttribute("aria-selected", x === b)); renderTeacher();
 }));
 $("#t-group").addEventListener("change", renderTeacher);
+$("#t-test").addEventListener("change", renderTeacher);
 $("#t-search").addEventListener("input", renderTeacher);
 $("#t-refresh").addEventListener("click", async () => { try { await loadTeacher(T.pw); } catch (e){} });
 $("#t-list").addEventListener("click", async e => {
