@@ -443,7 +443,7 @@ async function loadContent(){
 }
 
 const KEY = "hw11_student";
-const BUILD_ID = "202610252201";
+const BUILD_ID = "202610252206";
 /* Yeni versiya varsa, səhifə özü yenilənir (test gedərkən yox) */
 async function checkUpdate(){
   if (!/^https?:$/.test(location.protocol)) return;
@@ -601,13 +601,19 @@ $("#sets-list").addEventListener("click", e => {
   if (d) showResult(d, true); else startVocab(set);
 });
 let TOKEN = 0;
-async function startVocab(set){
-  if (!(await checkStatus())) return;
+let startedAt = 0;
+function startVocab(set){
+  // İkiqat toxunuş testi iki dəfə başlatmasın
+  if (Date.now() - startedAt < 1500) return;
+  startedAt = Date.now();
   const pool = WORDS.filter(w => setOf(w) === set);
   const n = Math.min(Number(TEXTS.vocab_count) || 40, pool.length);
   const local = WORDS; // variantlar həmin blokdan seçilir, çatmasa digər bloklardan
   V = { set, token: ++TOKEN, items: shuffle(pool).slice(0, n).map(w => ({ w, opts: buildOptions(w, pool.length >= 10 ? pool : local), chosen: null })), i: 0, lock: 0 };
   show("s-vocab"); renderVocab();
+  // Blok yoxlaması arxa planda: test gözləmədən dərhal açılır
+  const tok = V.token;
+  checkStatus().then(ok => { if (!ok && V && V.token === tok) V.token = -1; });
 }
 function renderVocab(){
   const it = V.items[V.i];
@@ -657,11 +663,13 @@ function finishVocab(){
 
 /* ---------- Grammar ---------- */
 let G = null;
-async function startGrammar(force){
+function startGrammar(force){
   if (!GRAMMAR.length) return show("s-gempty");
   const gd = getDone("grammar", "");
   if (gd && !force) return showResult(gd, true);
-  if (!(await checkStatus())) return;
+  if (Date.now() - startedAt < 1500) return;
+  startedAt = Date.now();
+  checkStatus();
   G = { qs: GRAMMAR.map(q => ({ q, chosen: null, visited: false })), i: 0, flagged: false };
   show("s-grammar"); renderGrammar();
 }
