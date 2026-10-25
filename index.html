@@ -154,7 +154,10 @@ mark{background:var(--mark);color:var(--mark-ink);padding:0 3px;border-radius:4p
 details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
 .code{font-weight:700;letter-spacing:.5px}
 .empty{text-align:center;color:var(--muted);padding:26px 10px}
-.sig{position:fixed;right:calc(14px + env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));background:none;border:0;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--muted);opacity:.45;padding:8px;z-index:5}
+.deco{text-align:center;margin-top:34px;color:var(--muted)}
+.deco svg{display:block;margin:0 auto 6px;width:96px;height:auto}
+.deco p{font-family:var(--serif);font-style:italic;font-size:15px;margin:0}
+.sig{background:none;border:0;padding:6px 0 6px 6px;margin-left:-6px;font:inherit;color:inherit;cursor:default;-webkit-tap-highlight-color:transparent}
 .ed-sec{margin-top:22px}
 .ed-sec > h2{display:flex;justify-content:space-between;align-items:center}
 .ed-row{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px}
@@ -191,6 +194,16 @@ details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
       <div class="err" id="r-err" role="alert"></div>
       <button class="btn" id="r-btn" type="submit">Qeydiyyatdan keç</button>
     </form>
+    <div class="deco" aria-hidden="false">
+      <svg viewBox="0 0 120 64" role="img" aria-label="Kitablar">
+        <rect x="14" y="44" width="70" height="12" rx="2" fill="var(--blue)" opacity=".85"/>
+        <rect x="20" y="31" width="62" height="12" rx="2" fill="var(--warn)" opacity=".85"/>
+        <rect x="16" y="18" width="58" height="12" rx="2" fill="var(--ok)" opacity=".8"/>
+        <rect x="24" y="21" width="2" height="6" fill="#fff" opacity=".7"/><rect x="28" y="34" width="2" height="6" fill="#fff" opacity=".7"/><rect x="22" y="47" width="2" height="6" fill="#fff" opacity=".7"/>
+        <g transform="rotate(-28 98 34)"><rect x="92" y="10" width="10" height="44" rx="2" fill="var(--mark)"/><polygon points="92,54 102,54 97,63" fill="var(--ink)" opacity=".7"/><rect x="92" y="10" width="10" height="6" fill="var(--bad)" opacity=".75"/></g>
+      </svg>
+      <p><button class="sig" type="button" data-go="teacher" tabindex="-1">S</button>tudy hard, shine bright</p>
+    </div>
       </section>
 
   <!-- BLOK -->
@@ -211,6 +224,16 @@ details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
     <p class="small muted" style="margin-top:26px;text-align:center">
       <button class="link" id="h-switch">Başqa şagird kimi daxil ol</button>
     </p>
+    <div class="deco" aria-hidden="false">
+      <svg viewBox="0 0 120 64" role="img" aria-label="Kitablar">
+        <rect x="14" y="44" width="70" height="12" rx="2" fill="var(--blue)" opacity=".85"/>
+        <rect x="20" y="31" width="62" height="12" rx="2" fill="var(--warn)" opacity=".85"/>
+        <rect x="16" y="18" width="58" height="12" rx="2" fill="var(--ok)" opacity=".8"/>
+        <rect x="24" y="21" width="2" height="6" fill="#fff" opacity=".7"/><rect x="28" y="34" width="2" height="6" fill="#fff" opacity=".7"/><rect x="22" y="47" width="2" height="6" fill="#fff" opacity=".7"/>
+        <g transform="rotate(-28 98 34)"><rect x="92" y="10" width="10" height="44" rx="2" fill="var(--mark)"/><polygon points="92,54 102,54 97,63" fill="var(--ink)" opacity=".7"/><rect x="92" y="10" width="10" height="6" fill="var(--bad)" opacity=".75"/></g>
+      </svg>
+      <p><button class="sig" type="button" data-go="teacher" tabindex="-1">S</button>tudy hard, shine bright</p>
+    </div>
   </section>
 
   <!-- VOCABULARY BLOKLARI -->
@@ -351,7 +374,6 @@ details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
   </div>
   <div class="toast" id="toast" role="status" hidden></div>
 </div>
-<button class="sig" data-go="teacher" aria-label="S">S</button>
 
 <script>
 /* ======================= AYARLAR ======================= */
@@ -425,7 +447,6 @@ let lastScreen = "s-register";
 function show(id){
   document.querySelectorAll(".screen").forEach(el => el.hidden = el.id !== id);
   if (!["s-tlogin","s-teacher","s-editor"].includes(id)) lastScreen = id;
-  const sig = document.querySelector(".sig"); if (sig) sig.hidden = !["s-register","s-home"].includes(id);
   window.scrollTo(0, 0);
 }
 
