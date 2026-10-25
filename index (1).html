@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F3C88">
+<title>Homework 11 class</title>
+<meta name="description" content="Vocabulary və Grammar Test. Qeydiyyatdan keç və başla.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Homework 11 class">
+<meta property="og:description" content="Vocabulary və Grammar Test. Qeydiyyatdan keç və başla.">
+<meta property="og:url" content="https://samirbalakishiyev.github.io/11classhomework/">
+<meta property="og:image" content="https://samirbalakishiyev.github.io/11classhomework/preview.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
+<style>
+:root{
+  --bg:#EDF1F7; --surface:#FFFFFF; --ink:#14213D; --muted:#5A6684; --line:#D3DAE6;
+  --brand:#1F3C88; --brand-ink:#FFFFFF; --mark:#FFE27A; --mark-ink:#14213D;
+  --ok:#15803D; --ok-bg:#DCF5E3; --bad:#C62828; --bad-bg:#FBE1E1;
+  --blue:#2563EB; --blue-bg:#DCE8FF; --warn:#D9700A; --warn-bg:#FFEAD3;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0D1424; --surface:#172038; --ink:#E7ECF6; --muted:#9AA6C1; --line:#2B385A;
+    --brand:#7C9BFF; --brand-ink:#0D1424; --mark:#5C4C0C; --mark-ink:#FFF3C4;
+    --ok:#4ADE80; --ok-bg:#11331E; --bad:#FF7B7B; --bad-bg:#3C1616;
+    --blue:#7DA8FF; --blue-bg:#172B52; --warn:#FFA94D; --warn-bg:#3B250F;
+    color-scheme: dark;
+  }
+}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.45;-webkit-text-size-adjust:100%}
+.wrap{max-width:560px;margin:0 auto;padding:20px 16px 40px}
+.screen[hidden]{display:none}
+h1{font-family:var(--serif);font-size:30px;line-height:1.15;margin:8px 0 4px;font-weight:700}
+h2{font-size:20px;margin:0 0 10px}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.btn{display:block;width:100%;border:0;border-radius:14px;padding:15px 18px;font-weight:650;background:var(--brand);color:var(--brand-ink);font-size:17px}
+.btn:disabled{opacity:.55}
+.btn.ghost{background:transparent;color:var(--brand);border:2px solid var(--line)}
+.btn.wa{background:#1FA855;color:#fff}
+.btn + .btn{margin-top:10px}
+.link{background:none;border:0;color:var(--brand);text-decoration:underline;padding:6px 0;font-size:15px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
+
+/* Qeydiyyat */
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:650;margin-bottom:6px}
+.field input,.field select{width:100%;padding:13px 14px;border-radius:12px;border:2px solid var(--line);background:var(--surface);font-size:17px}
+.field input:focus{border-color:var(--brand);outline:none}
+.hint{font-size:14px;color:var(--muted);margin-top:5px}
+.phone{display:flex;align-items:stretch;border:2px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.phone:focus-within{border-color:var(--brand)}
+.phone span{padding:13px 12px;background:var(--bg);font-weight:650;border-right:2px solid var(--line)}
+.phone input{border:0!important;border-radius:0;flex:1;min-width:0}
+.phone-label{background:var(--mark);color:var(--mark-ink);padding:1px 6px;border-radius:5px}
+.err{color:var(--bad);font-size:15px;margin:4px 0 12px;min-height:1px}
+.brandline{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:15px}
+.badge{display:inline-block;background:var(--brand);color:var(--brand-ink);font-weight:700;border-radius:8px;padding:2px 9px;font-size:14px}
+
+/* Ana ekran */
+.tiles{display:grid;gap:14px;margin-top:18px}
+.tile{display:flex;align-items:center;gap:16px;text-align:left;width:100%;border:2px solid var(--line);background:var(--surface);border-radius:20px;padding:20px}
+.tile .ic{flex:none;width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-size:30px;background:var(--blue-bg)}
+.tile.g .ic{background:var(--warn-bg)}
+.tile.done{border-color:var(--blue);background:var(--blue-bg)}
+.tile.done .ic{background:var(--blue);color:#fff}
+.tile:disabled{opacity:.55;cursor:default}
+.tile .st2{display:block;font-size:14px;font-weight:650;margin-top:2px}
+.tile .st2.ok{color:var(--blue)} .tile .st2.no{color:var(--warn)}
+.tile b{display:block;font-size:21px}
+.tile small{color:var(--muted);font-size:15px}
+
+/* Vocabulary */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.progress{height:8px;background:var(--line);border-radius:8px;overflow:hidden;margin-bottom:22px}
+.progress i{display:block;height:100%;background:var(--brand);transition:width .25s}
+.wordbox{text-align:center;padding:26px 12px 22px}
+.word{font-family:var(--serif);font-size:clamp(34px,10vw,50px);font-weight:700;line-height:1.1;word-break:break-word}
+.speak{margin-top:14px;border:2px solid var(--line);background:var(--surface);border-radius:999px;padding:9px 18px;font-weight:650;color:var(--brand)}
+.opts{display:grid;gap:10px;margin-top:18px}
+.opt{width:100%;text-align:left;padding:15px 16px;border-radius:14px;border:2px solid var(--line);background:var(--surface);font-size:18px;font-weight:550;display:flex;gap:12px;align-items:center}
+.opt .k{flex:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--bg);font-size:14px;font-weight:700;color:var(--muted)}
+.opt.is-ok{border-color:var(--ok);background:var(--ok-bg)}
+.opt.is-ok .k{background:var(--ok);color:#fff}
+.opt.is-bad{border-color:var(--bad);background:var(--bad-bg)}
+.opt.is-bad .k{background:var(--bad);color:#fff}
+.opt:disabled{cursor:default;color:inherit;opacity:1}
+.feedback{margin-top:16px;border-left:5px solid var(--bad);background:var(--surface);border-radius:12px;padding:14px 16px}
+.feedback .ex{font-family:var(--serif);font-size:19px;margin:6px 0 0}
+mark{background:var(--mark);color:var(--mark-ink);padding:0 3px;border-radius:4px}
+
+/* Grammar */
+.nav{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.nav button{width:40px;height:40px;border-radius:10px;border:2px solid var(--line);background:var(--surface);font-weight:700;font-size:15px}
+.nav .n-ok{background:var(--blue);border-color:var(--blue);color:#fff}
+.nav .n-bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.nav .n-skip{background:var(--warn);border-color:var(--warn);color:#fff}
+.nav .n-cur{box-shadow:0 0 0 3px var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--muted);margin:-6px 0 14px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.qtext{font-size:20px;font-weight:600;margin:4px 0 6px}
+.pager{display:flex;gap:10px;margin-top:18px}
+.pager .btn{margin:0}
+
+/* Nəticə */
+.score{font-family:var(--serif);font-size:64px;font-weight:700;line-height:1;margin:6px 0}
+.score small{font-size:26px;color:var(--muted)}
+.wrong{list-style:none;padding:0;margin:8px 0 0}
+.wrong li{padding:9px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px}
+.wrong li span:last-child{color:var(--muted);text-align:right}
+.sendstate{font-size:15px;margin-top:10px}
+.sendstate.ok{color:var(--ok)} .sendstate.bad{color:var(--bad)}
+
+/* Modal */
+.modal{position:fixed;inset:0;background:rgba(5,10,25,.55);display:flex;align-items:flex-end;justify-content:center;padding:16px;z-index:20}
+.modal[hidden]{display:none}
+.modal .card{max-width:520px;width:100%;margin-bottom:env(safe-area-inset-bottom,0px)}
+
+/* Müəllim paneli */
+.tabs{display:flex;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px;margin:14px 0}
+.tabs button{flex:1;border:0;background:transparent;border-radius:10px;padding:10px;font-weight:650}
+.tabs button[aria-selected="true"]{background:var(--brand);color:var(--brand-ink)}
+.filters{display:flex;gap:8px;margin-bottom:12px}
+.filters input,.filters select{flex:1;min-width:0;padding:11px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface)}
+.stats{display:flex;gap:10px;margin-top:10px}
+.stats div{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.stats b{display:block;font-size:24px}
+.row{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:13px 14px;margin-bottom:9px}
+.row .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.row .name{font-weight:700}
+.row .meta{font-size:14px;color:var(--muted)}
+.row a{color:var(--brand)}
+.st{font-size:13px;font-weight:700;border-radius:7px;padding:2px 8px;white-space:nowrap}
+.st.aktiv{background:var(--ok-bg);color:var(--ok)}
+.st.blok{background:var(--bad-bg);color:var(--bad)}
+.mini{border:2px solid var(--line);background:var(--surface);border-radius:10px;padding:7px 12px;font-size:14px;font-weight:650;margin-top:9px}
+.mini.danger{color:var(--bad)}
+.pct{font-family:var(--serif);font-size:26px;font-weight:700;line-height:1}
+details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
+.code{font-weight:700;letter-spacing:.5px}
+.tbl{width:100%;border-collapse:separate;border-spacing:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:16px}
+.tbl th,.tbl td{padding:10px 10px;border-bottom:1px solid var(--line);text-align:left}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th{font-size:13px;color:var(--muted);font-weight:650;background:var(--bg)}
+.tbl td.n{width:34px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tbl td.r{text-align:right;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tbl tr.miss td{background:var(--bad-bg)}
+.tbl tr.miss td.r{color:var(--bad);font-weight:650}
+.tbl .g{color:var(--muted);font-size:13px}
+.sum{display:flex;justify-content:space-between;font-size:15px;margin:0 2px 8px;color:var(--muted)}
+.sum b{color:var(--ink)}
+.empty{text-align:center;color:var(--muted);padding:26px 10px}
+.deco{text-align:center;margin-top:34px;color:var(--muted)}
+.deco svg{display:block;margin:0 auto 6px;width:96px;height:auto}
+.deco p{font-family:var(--serif);font-style:italic;font-size:15px;margin:0}
+.sig{background:none;border:0;padding:6px 0 6px 6px;margin-left:-6px;font:inherit;color:inherit;cursor:default;-webkit-tap-highlight-color:transparent}
+.ed-sec{margin-top:22px}
+.ed-sec > h2{display:flex;justify-content:space-between;align-items:center}
+.ed-row{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px}
+.ed-row .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ed-row input,.ed-row select,.ed-row textarea,.ed-home input{width:100%;padding:10px 11px;border-radius:10px;border:2px solid var(--line);background:var(--bg);font-size:16px}
+.ed-row textarea{resize:vertical;min-height:58px;font-family:inherit}
+.ed-row label,.ed-home label{display:block;font-size:13px;color:var(--muted);margin:6px 0 3px;font-weight:600}
+.ed-row .foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.ed-home{background:var(--surface);border:2px dashed var(--brand);border-radius:18px;padding:14px}
+.ed-home .big{font-family:var(--serif);font-size:24px;font-weight:700}
+.savebar{position:sticky;bottom:0;padding:12px 0 calc(12px + env(safe-area-inset-bottom,0px));background:var(--bg);margin-top:16px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:12px;font-size:15px;z-index:30;max-width:90vw}
+.toast[hidden]{display:none}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- QEYDİYYAT -->
+  <section class="screen" id="s-register" hidden>
+    <div class="brandline"><span class="badge">11</span> <span class="js-title">Homework 11 class</span></div>
+    <h1>Qeydiyyatdan keç</h1>
+    <p class="muted">Bir dəfə qeydiyyatdan keçirsən, sonra nəticələrin müəllimə öz adınla gedir.</p>
+    <form id="reg-form" class="card" novalidate>
+      <div class="field"><label for="r-name">Ad</label><input id="r-name" autocomplete="given-name" maxlength="40" required></div>
+      <div class="field"><label for="r-surname">Soyad</label><input id="r-surname" autocomplete="family-name" maxlength="40" required></div>
+      <div class="field"><label for="r-group">Qrup</label><input id="r-group" maxlength="20" placeholder="Məsələn: 8A, N11, N18.1" autocapitalize="characters" required></div>
+      <div class="field">
+        <label for="r-phone"><span class="phone-label">Şagirdin öz əlaqə nömrəsi</span></label>
+        <div class="phone"><span>+994</span><input id="r-phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="50 123 45 67" maxlength="12" required></div>
+        <div class="hint">Valideynin yox, <b>öz</b> nömrəni yaz. Məsələn: 50 123 45 67 və ya 55 123 45 67</div>
+      </div>
+      <div class="err" id="r-err" role="alert"></div>
+      <button class="btn" id="r-btn" type="submit">Qeydiyyatdan keç</button>
+    </form>
+    <div class="deco" aria-hidden="false">
+      <svg viewBox="0 0 120 64" role="img" aria-label="Kitablar">
+        <rect x="14" y="44" width="70" height="12" rx="2" fill="var(--blue)" opacity=".85"/>
+        <rect x="20" y="31" width="62" height="12" rx="2" fill="var(--warn)" opacity=".85"/>
+        <rect x="16" y="18" width="58" height="12" rx="2" fill="var(--ok)" opacity=".8"/>
+        <rect x="24" y="21" width="2" height="6" fill="#fff" opacity=".7"/><rect x="28" y="34" width="2" height="6" fill="#fff" opacity=".7"/><rect x="22" y="47" width="2" height="6" fill="#fff" opacity=".7"/>
+        <g transform="rotate(-28 98 34)"><rect x="92" y="10" width="10" height="44" rx="2" fill="var(--mark)"/><polygon points="92,54 102,54 97,63" fill="var(--ink)" opacity=".7"/><rect x="92" y="10" width="10" height="6" fill="var(--bad)" opacity=".75"/></g>
+      </svg>
+      <p><button class="sig" type="button" data-go="teacher" tabindex="-1">S</button>tudy hard, shine bright</p>
+    </div>
+      </section>
+
+  <!-- BLOK -->
+  <section class="screen" id="s-blocked" hidden>
+    <h1>Giriş bağlanıb</h1>
+    <div class="card"><p>Müəllim bu hesab üçün girişi bağlayıb. Səbəbini öyrənmək üçün müəlliminlə əlaqə saxla.</p></div>
+  </section>
+
+  <!-- ANA EKRAN -->
+  <section class="screen" id="s-home" hidden>
+    <div class="brandline"><span class="badge">11</span> <span id="h-who"></span></div>
+    <h1 class="js-title">Homework 11 class</h1>
+    <p class="muted" id="h-sub">Bölməni seç və başla.</p>
+    <div class="tiles">
+      <button class="tile" data-go="sets" id="h-vtile"><span class="ic">🔤</span><span><b id="h-vt">Vocabulary</b><small id="h-vs">Word exam, 40 söz</small></span></button>
+      <button class="tile g" data-go="grammar" id="h-gtile"><span class="ic">📝</span><span><b id="h-gt">Grammar Test</b><small id="h-gs">Test</small></span></button>
+    </div>
+    <p class="small muted" style="margin-top:26px;text-align:center">
+      <button class="link" id="h-switch">Başqa şagird kimi daxil ol</button>
+    </p>
+    <div class="deco" aria-hidden="false">
+      <svg viewBox="0 0 120 64" role="img" aria-label="Kitablar">
+        <rect x="14" y="44" width="70" height="12" rx="2" fill="var(--blue)" opacity=".85"/>
+        <rect x="20" y="31" width="62" height="12" rx="2" fill="var(--warn)" opacity=".85"/>
+        <rect x="16" y="18" width="58" height="12" rx="2" fill="var(--ok)" opacity=".8"/>
+        <rect x="24" y="21" width="2" height="6" fill="#fff" opacity=".7"/><rect x="28" y="34" width="2" height="6" fill="#fff" opacity=".7"/><rect x="22" y="47" width="2" height="6" fill="#fff" opacity=".7"/>
+        <g transform="rotate(-28 98 34)"><rect x="92" y="10" width="10" height="44" rx="2" fill="var(--mark)"/><polygon points="92,54 102,54 97,63" fill="var(--ink)" opacity=".7"/><rect x="92" y="10" width="10" height="6" fill="var(--bad)" opacity=".75"/></g>
+      </svg>
+      <p><button class="sig" type="button" data-go="teacher" tabindex="-1">S</button>tudy hard, shine bright</p>
+    </div>
+  </section>
+
+  <!-- VOCABULARY BLOKLARI -->
+  <section class="screen" id="s-sets" hidden>
+    <div class="topbar"><button class="mini" data-go="home" style="margin:0">Ana səhifə</button></div>
+    <h1 id="sets-title">Vocabulary</h1>
+    <p class="muted">Bloku seç. Mavi bloklar işlənib.</p>
+    <div class="tiles" id="sets-list"></div>
+  </section>
+
+  <!-- VOCABULARY -->
+  <section class="screen" id="s-vocab" hidden>
+    <div class="topbar"><button class="mini" data-go="leave" style="margin:0">Ana səhifə</button><b id="v-progress"></b></div>
+    <div class="progress"><i id="v-bar"></i></div>
+    <div class="card wordbox">
+      <div class="word" id="v-word"></div>
+      <button class="speak" id="v-speak" type="button">🔊 Yenidən dinlə</button>
+    </div>
+    <div class="opts" id="v-opts"></div>
+    <div class="feedback" id="v-feedback" hidden>
+      <b>Doğru cavab: <span id="v-correct"></span></b>
+      <p class="ex" id="v-ex"></p>
+      <button class="speak" id="v-ex-speak" type="button">🔊 Cümləni dinlə</button>
+      <button class="btn" id="v-next" type="button" style="margin-top:14px">Növbəti</button>
+    </div>
+  </section>
+
+  <!-- GRAMMAR -->
+  <section class="screen" id="s-grammar" hidden>
+    <div class="topbar"><button class="mini" data-go="leave" style="margin:0">Ana səhifə</button><button class="mini" id="g-finish-top" type="button" style="margin:0">İmtahanı bitir</button></div>
+    <div class="nav" id="g-nav"></div>
+    <div class="legend"><span><i style="background:var(--blue)"></i>Düz</span><span><i style="background:var(--bad)"></i>Səhv</span><span><i style="background:var(--warn)"></i>Cavabsız</span></div>
+    <div class="card">
+      <div class="muted small" id="g-num"></div>
+      <div class="qtext" id="g-q"></div>
+      <div class="opts" id="g-opts"></div>
+    </div>
+    <div class="pager">
+      <button class="btn ghost" id="g-prev" type="button">Əvvəlki</button>
+      <button class="btn" id="g-next" type="button">Növbəti</button>
+    </div>
+  </section>
+
+  <section class="screen" id="s-gempty" hidden>
+    <div class="topbar"><button class="mini" data-go="home" style="margin:0">Ana səhifə</button></div>
+    <h1>Grammar Test</h1>
+    <div class="card"><p>Testlər hələ əlavə olunmayıb. Müəllim əlavə edəndə burada görünəcək.</p></div>
+  </section>
+
+  <!-- NƏTİCƏ -->
+  <section class="screen" id="s-result" hidden>
+    <div class="brandline" id="res-type"></div>
+    <h1>Nəticən</h1>
+    <div class="card">
+      <div class="score" id="res-score"></div>
+      <div class="muted" id="res-pct"></div>
+    </div>
+    <div style="margin:16px 0">
+      <button class="btn" id="res-send" type="button">Nəticəni yadda saxla</button>
+      <div class="sendstate" id="res-state" role="status"></div>
+    </div>
+    <div class="card" id="res-wrong-wrap">
+      <b id="res-wrong-title"></b>
+      <ul class="wrong" id="res-wrong"></ul>
+    </div>
+    <button class="btn ghost" id="res-redo" type="button" style="margin-top:16px">Yenidən işlə</button>
+    <button class="btn ghost" data-go="home" type="button">Ana səhifəyə qayıt</button>
+  </section>
+
+  <!-- MÜƏLLİM GİRİŞİ -->
+  <section class="screen" id="s-tlogin" hidden>
+    <div class="topbar"><button class="link" data-go="back">Geri</button></div>
+    <h1>Müəllim paneli</h1>
+    <form id="t-form" class="card" novalidate>
+      <div class="field"><label for="t-pass">Şifrə</label><input id="t-pass" type="password" autocomplete="current-password" required></div>
+      <div class="err" id="t-err" role="alert"></div>
+      <button class="btn" id="t-btn" type="submit">Daxil ol</button>
+    </form>
+  </section>
+
+  <!-- MÜƏLLİM PANELİ -->
+  <section class="screen" id="s-teacher" hidden>
+    <div class="topbar"><button class="link" data-go="back">Geri</button><span><button class="mini" id="t-refresh" type="button" style="margin:0">Yenilə</button> <button class="mini" id="t-edit" type="button" style="margin:0">Redaktə</button></span></div>
+    <h1>Müəllim paneli</h1>
+    <div class="stats"><div><b id="t-scount">0</b><span class="small muted">şagird</span></div><div><b id="t-rcount">0</b><span class="small muted">nəticə</span></div><div><b id="t-bcount">0</b><span class="small muted">bloklu</span></div></div>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="table">Cədvəl</button>
+      <button role="tab" aria-selected="false" data-tab="students">Şagirdlər</button>
+      <button role="tab" aria-selected="false" data-tab="results">Nəticələr</button>
+    </div>
+    <div class="filters">
+      <select id="t-group" aria-label="Qrup"><option value="">Bütün qruplar</option></select>
+      <input id="t-search" type="search" placeholder="Ad axtar" aria-label="Axtar">
+    </div>
+    <select id="t-test" aria-label="Test" style="width:100%;padding:11px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);margin-bottom:12px;font-weight:650"></select>
+    <div id="t-list"></div>
+    <p style="text-align:center;margin-top:20px"><button class="link" id="t-logout">Paneldən çıx (şifrəni unut)</button></p>
+  </section>
+
+  <!-- REDAKTƏ -->
+  <section class="screen" id="s-editor" hidden>
+    <div class="topbar"><button class="link" id="e-back">Panelə qayıt</button><b>Redaktə</b></div>
+    <div class="ed-sec" style="margin-top:6px">
+      <h2>Ana ekran</h2>
+      <div class="ed-home">
+        <label for="e-title">Başlıq</label><input id="e-title" class="big" maxlength="60">
+        <label for="e-sub">Başlığın altındakı yazı</label><input id="e-sub" maxlength="120">
+        <div class="ed-row" style="margin-top:12px;background:var(--bg)">
+          <label for="e-vt">🔤 Birinci blokun adı</label><input id="e-vt" maxlength="40">
+          <label for="e-vs">Altındakı yazı</label><input id="e-vs" maxlength="80">
+          <label for="e-vsets">Bloklar (vergüllə ayır, məsələn: 75-76, 77-78, 79-80)</label><input id="e-vsets" maxlength="200">
+          <label for="e-vc">Hər blokda neçə söz soruşulsun</label><input id="e-vc" type="number" min="5" max="200" inputmode="numeric">
+        </div>
+        <div class="ed-row" style="background:var(--bg);margin-bottom:0">
+          <label for="e-gt">📝 İkinci blokun adı</label><input id="e-gt" maxlength="40">
+          <label for="e-gs">Altındakı yazı (boş qalsa sual sayı yazılır)</label><input id="e-gs" maxlength="80">
+        </div>
+      </div>
+    </div>
+    <div class="ed-sec">
+      <h2><span>Sözlər <span class="muted small" id="e-wcount"></span></span><button class="mini" id="e-wadd" type="button" style="margin:0">Söz əlavə et</button></h2>
+      <select id="e-wset" aria-label="Blok" style="width:100%;padding:11px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);margin-bottom:8px"></select>
+      <input id="e-wsearch" type="search" placeholder="Sözü axtar" aria-label="Sözü axtar" style="width:100%;padding:11px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);margin-bottom:10px">
+      <div id="e-words"></div>
+    </div>
+    <div class="ed-sec">
+      <h2><span>Grammar testləri <span class="muted small" id="e-gcount"></span></span><button class="mini" id="e-gadd" type="button" style="margin:0">Sual əlavə et</button></h2>
+      <div id="e-grammar"></div>
+    </div>
+    <div class="savebar"><button class="btn" id="e-save" type="button">Yadda saxla</button></div>
+  </section>
+
+  <div class="modal" id="modal" hidden>
+    <div class="card" role="dialog" aria-modal="true">
+      <h2 id="m-title"></h2>
+      <p id="m-text"></p>
+      <button class="btn" id="m-ok" type="button"></button>
+      <button class="btn ghost" id="m-cancel" type="button"></button>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" hidden></div>
+</div>
+
+<script>
+/* ======================= AYARLAR ======================= */
+const CONFIG = {
+  API_URL: "https://script.google.com/macros/s/AKfycbyAOJsaF19s34zv05JDzT_tEu4loIaDf5zG68UhuEX6oWecvt2xdPRIbMTXuDxGA89RUQ/exec",                    // Google Apps Script "Web app" linkini bura yapışdırın
+  TEACHER_PHONE: "994557958625",  // Nəticələrin gedəcəyi WhatsApp nömrəsi
+  VOCAB_COUNT: 40,
+  SECRET: "hw11-98e0d6b18acc"            // Code.gs-dəki SECRET ilə eyni olmalıdır
+};
+/* ======================================================= */
+let WORDS = [{"id": "suit-n", "en": "suit (n)", "az": "kostyum", "pos": "n", "ex": "He wore a dark suit to the job interview.", "set": "75-76"}, {"id": "suit-v", "en": "suit (v)", "az": "yaraşmaq", "pos": "v", "ex": "That blue colour really suits you.", "set": "75-76"}, {"id": "capital", "en": "capital", "az": "paytaxt", "pos": "n", "ex": "Baku is the capital of Azerbaijan.", "set": "75-76"}, {"id": "throw-ball", "en": "throw a ball", "az": "top atmaq", "pos": "v", "ex": "The boy tried to throw a ball over the fence.", "set": "75-76"}, {"id": "convenient", "en": "convenient", "az": "rahat", "pos": "adj", "ex": "The bus stop is very convenient for me.", "set": "75-76"}, {"id": "cliff", "en": "cliff", "az": "qayalıq", "pos": "n", "ex": "We stood on the edge of the cliff and looked at the sea.", "set": "75-76"}, {"id": "rush", "en": "rush", "az": "tələsmək", "pos": "v", "ex": "Don't rush, we have plenty of time.", "set": "75-76"}, {"id": "private", "en": "private", "az": "özəl", "pos": "adj", "ex": "She goes to a private school.", "set": "75-76"}, {"id": "self-worth", "en": "self-worth", "az": "özünə dəyər", "pos": "n", "ex": "Good friends help you build your self-worth.", "set": "75-76"}, {"id": "dreadful", "en": "dreadful", "az": "dəhşətli", "pos": "adj", "ex": "The weather was dreadful all weekend.", "set": "75-76"}, {"id": "eyebrow", "en": "eyebrow", "az": "qaş", "pos": "n", "ex": "He raised one eyebrow in surprise.", "set": "75-76"}, {"id": "running-water", "en": "running water", "az": "axar su", "pos": "n", "ex": "The old village house had no running water.", "set": "75-76"}, {"id": "enthusiastic", "en": "enthusiastic", "az": "həvəsli", "pos": "adj", "ex": "The students were enthusiastic about the trip.", "set": "75-76"}, {"id": "ticket", "en": "ticket", "az": "bilet", "pos": "n", "ex": "I bought a ticket for the concert.", "set": "75-76"}, {"id": "transmit", "en": "transmit", "az": "ötürmək", "pos": "v", "ex": "Mosquitoes can transmit diseases.", "set": "75-76"}, {"id": "tell-story", "en": "tell a story", "az": "hekayə danışmaq", "pos": "v", "ex": "Grandma likes to tell a story before bedtime.", "set": "75-76"}, {"id": "wallet", "en": "wallet", "az": "pul çantası", "pos": "n", "ex": "I left my wallet at home.", "set": "75-76"}, {"id": "toss", "en": "toss", "az": "atmaq", "pos": "v", "ex": "He tossed a coin to decide who would start.", "set": "75-76"}, {"id": "bulwark", "en": "bulwark", "az": "müdafiə divarı", "pos": "n", "ex": "The soldiers built a bulwark to protect the city.", "set": "75-76"}, {"id": "glass", "en": "glass", "az": "şüşə, stəkan", "pos": "n", "ex": "Can I have a glass of water, please?", "set": "75-76"}, {"id": "regardless", "en": "regardless of", "az": "asılı olmayaraq", "pos": "adv", "ex": "Everyone can join the club, regardless of age.", "set": "75-76"}, {"id": "freezing", "en": "freezing", "az": "dondurucu", "pos": "adj", "ex": "It's freezing outside, so wear a warm coat.", "set": "75-76"}, {"id": "weigh", "en": "weigh", "az": "çəkmək (çəkini)", "pos": "v", "ex": "The nurse will weigh the baby every week.", "set": "75-76"}, {"id": "veteran", "en": "veteran", "az": "veteran", "pos": "n", "ex": "My grandfather is a war veteran.", "set": "75-76"}, {"id": "take-notice", "en": "take notice", "az": "nəzərə almaq", "pos": "v", "ex": "Nobody seemed to take notice of the warning signs.", "set": "75-76"}, {"id": "aid", "en": "aid", "az": "yardım", "pos": "n", "ex": "The country sent food aid to the flood victims.", "set": "75-76"}, {"id": "public", "en": "public", "az": "ictimai", "pos": "adj", "ex": "This is a public park, so everyone can use it.", "set": "75-76"}, {"id": "so", "en": "so", "az": "buna görə", "pos": "adv", "ex": "It was raining, so we stayed at home.", "set": "75-76"}, {"id": "retrieve", "en": "retrieve", "az": "bərpa etmək", "pos": "v", "ex": "He managed to retrieve the lost files.", "set": "75-76"}, {"id": "zoo", "en": "zoo", "az": "zoopark", "pos": "n", "ex": "We saw two lions at the zoo.", "set": "75-76"}, {"id": "fruit", "en": "fruit", "az": "meyvə", "pos": "n", "ex": "Try to eat more fruit and vegetables.", "set": "75-76"}, {"id": "dreary", "en": "dreary", "az": "darıxdırıcı", "pos": "adj", "ex": "It was a cold, dreary day in November.", "set": "75-76"}, {"id": "keen-on", "en": "be keen on", "az": "çox xoşlamaq", "pos": "v", "ex": "My brother is keen on football.", "set": "75-76"}, {"id": "warning", "en": "warning", "az": "xəbərdarlıq", "pos": "n", "ex": "The teacher gave him a final warning.", "set": "75-76"}, {"id": "memory", "en": "memory", "az": "yaddaş", "pos": "n", "ex": "She has a very good memory for names.", "set": "75-76"}, {"id": "cheer-up", "en": "cheer smb up", "az": "ruhlandırmaq", "pos": "v", "ex": "I bought her flowers to cheer her up.", "set": "75-76"}, {"id": "regular", "en": "regular", "az": "müntəzəm", "pos": "adj", "ex": "Take regular breaks when you study.", "set": "75-76"}, {"id": "now", "en": "now", "az": "indi", "pos": "adv", "ex": "I'm busy now, call me later.", "set": "75-76"}, {"id": "positive-side", "en": "positive side", "az": "müsbət tərəf", "pos": "n", "ex": "Try to look at the positive side of things.", "set": "75-76"}, {"id": "differ", "en": "differ", "az": "fərqlənmək", "pos": "v", "ex": "Our opinions differ on this question.", "set": "75-76"}, {"id": "legacy", "en": "legacy", "az": "irs", "pos": "n", "ex": "The great writer left a rich legacy.", "set": "75-76"}, {"id": "correct-v", "en": "correct (v)", "az": "düzəltmək", "pos": "v", "ex": "The teacher corrected my mistakes.", "set": "75-76"}, {"id": "correct-adj", "en": "correct (adj)", "az": "düzgün", "pos": "adj", "ex": "Choose the correct answer.", "set": "75-76"}, {"id": "racial-discr", "en": "racial discrimination", "az": "irqi ayrı-seçkilik", "pos": "n", "ex": "Racial discrimination is against the law.", "set": "75-76"}, {"id": "headache", "en": "headache", "az": "baş ağrısı", "pos": "n", "ex": "I have a terrible headache today.", "set": "75-76"}, {"id": "treaty", "en": "treaty", "az": "saziş", "pos": "n", "ex": "The two countries signed a peace treaty.", "set": "75-76"}, {"id": "envious", "en": "envious", "az": "paxıl", "pos": "adj", "ex": "He was envious of his friend's new car.", "set": "75-76"}, {"id": "make-mind", "en": "make up one's mind", "az": "qərar vermək", "pos": "v", "ex": "I can't make up my mind which phone to buy.", "set": "75-76"}, {"id": "wing", "en": "wing", "az": "qanad", "pos": "n", "ex": "The little bird hurt its wing.", "set": "75-76"}, {"id": "fried", "en": "fried", "az": "qızardılmış", "pos": "adj", "ex": "I love fried potatoes.", "set": "75-76"}, {"id": "receive-award", "en": "receive an award", "az": "mükafat almaq", "pos": "v", "ex": "She will receive an award for her research.", "set": "75-76"}, {"id": "poultry", "en": "poultry", "az": "toyuq-cücə", "pos": "n", "ex": "The farmer keeps poultry and cows.", "set": "75-76"}, {"id": "genocide", "en": "genocide", "az": "soyqırım", "pos": "n", "ex": "The museum tells the story of the genocide and its victims.", "set": "75-76"}, {"id": "counterattack", "en": "counterattack", "az": "əks-hücum etmək", "pos": "v", "ex": "The team waited, then counterattacked quickly.", "set": "75-76"}, {"id": "on-average", "en": "on average", "az": "ortalama", "pos": "adv", "ex": "On average, I sleep seven hours a night.", "set": "75-76"}, {"id": "passion", "en": "passion", "az": "ehtiras, həvəs", "pos": "n", "ex": "Music is her greatest passion.", "set": "75-76"}, {"id": "accelerate", "en": "accelerate", "az": "sürətləndirmək", "pos": "v", "ex": "The car accelerated on the highway.", "set": "75-76"}, {"id": "strength", "en": "strength", "az": "güc", "pos": "n", "ex": "You need strength to lift this heavy box.", "set": "75-76"}, {"id": "several", "en": "several", "az": "bir neçə", "pos": "adv", "ex": "I've read this book several times.", "set": "75-76"}, {"id": "donate", "en": "donate", "az": "ianə vermək", "pos": "v", "ex": "They donated money to the children's hospital.", "set": "75-76"}, {"id": "rainforest", "en": "rainforest", "az": "yağmur ormanı", "pos": "n", "ex": "Many rare animals live in the rainforest.", "set": "75-76"}, {"id": "lawyer", "en": "lawyer", "az": "vəkil", "pos": "n", "ex": "My uncle works as a lawyer.", "set": "75-76"}, {"id": "ambassador", "en": "ambassador", "az": "səfir", "pos": "n", "ex": "The new ambassador arrived in Baku last week.", "set": "77-78"}, {"id": "graceful", "en": "graceful", "az": "zərif", "pos": "adj", "ex": "The ballerina made a graceful movement.", "set": "77-78"}, {"id": "lead-life", "en": "lead a life", "az": "həyat sürmək", "pos": "v", "ex": "My grandparents lead a quiet life in the village.", "set": "77-78"}, {"id": "honesty", "en": "honesty", "az": "dürüstlük", "pos": "n", "ex": "Honesty is the most important thing in a friendship.", "set": "77-78"}, {"id": "research-n", "en": "research (n)", "az": "tədqiqat", "pos": "n", "ex": "Scientists are doing research on new medicines.", "set": "77-78"}, {"id": "research-v", "en": "research (v)", "az": "araşdırmaq", "pos": "v", "ex": "I need to research this topic for my project.", "set": "77-78"}, {"id": "make-excuse", "en": "make an excuse", "az": "bəhanə etmək", "pos": "v", "ex": "Don't make an excuse, just tell me the truth.", "set": "77-78"}, {"id": "interact", "en": "interact", "az": "qarşılıqlı əlaqə qurmaq", "pos": "v", "ex": "Children learn by interacting with each other.", "set": "77-78"}, {"id": "generosity", "en": "generosity", "az": "xeyirxahlıq", "pos": "n", "ex": "Thank you for your kindness and generosity.", "set": "77-78"}, {"id": "immense", "en": "immense", "az": "geniş, böyük", "pos": "adj", "ex": "The project was an immense success.", "set": "77-78"}, {"id": "ceasefire", "en": "ceasefire", "az": "atəşkəs", "pos": "n", "ex": "Both sides agreed to a ceasefire.", "set": "77-78"}, {"id": "industrious", "en": "industrious", "az": "çalışqan", "pos": "adj", "ex": "She is an industrious student who never misses a lesson.", "set": "77-78"}, {"id": "labour", "en": "labour", "az": "iş", "pos": "n", "ex": "Building the bridge took years of hard labour.", "set": "77-78"}, {"id": "improvement", "en": "improvement", "az": "təkmilləşdirmə", "pos": "n", "ex": "There is a big improvement in your English.", "set": "77-78"}, {"id": "humorous", "en": "humorous", "az": "gülməli", "pos": "adj", "ex": "He told us a humorous story about his cat.", "set": "77-78"}, {"id": "frosty", "en": "frosty", "az": "şaxtalı", "pos": "adj", "ex": "It was a frosty morning in January.", "set": "77-78"}, {"id": "departure", "en": "departure", "az": "ayrılma", "pos": "n", "ex": "The departure of the train was delayed.", "set": "77-78"}, {"id": "involve", "en": "involve", "az": "cəlb etmək", "pos": "v", "ex": "The teacher tries to involve every student in the lesson.", "set": "77-78"}, {"id": "lately", "en": "lately", "az": "son zamanlar", "pos": "adv", "ex": "Have you seen any good films lately?", "set": "77-78"}, {"id": "doubt", "en": "doubt", "az": "şübhə", "pos": "n", "ex": "There is no doubt that she will win.", "set": "77-78"}, {"id": "ally", "en": "ally", "az": "müttəfiq", "pos": "n", "ex": "The two countries have been allies for many years.", "set": "77-78"}, {"id": "charitable", "en": "charitable", "az": "xeyriyyəçi", "pos": "adj", "ex": "She works for a charitable organization.", "set": "77-78"}, {"id": "bully", "en": "bully", "az": "zorbalıq etmək", "pos": "v", "ex": "It is wrong to bully younger children.", "set": "77-78"}, {"id": "celebrity", "en": "celebrity", "az": "məşhur şəxs", "pos": "n", "ex": "A famous celebrity visited our school.", "set": "77-78"}, {"id": "look-through", "en": "look through", "az": "gözdən keçirmək", "pos": "v", "ex": "Please look through your answers before you finish.", "set": "77-78"}, {"id": "difficulty", "en": "difficulty", "az": "çətinlik", "pos": "n", "ex": "He had difficulty finding the hotel.", "set": "77-78"}, {"id": "boost", "en": "boost", "az": "artırmaq", "pos": "v", "ex": "Sport can boost your energy.", "set": "77-78"}, {"id": "obesity", "en": "obesity", "az": "köklük", "pos": "n", "ex": "Fast food is one of the causes of obesity.", "set": "77-78"}, {"id": "unlike", "en": "unlike", "az": "fərqli", "pos": "adv", "ex": "Unlike her sister, Leyla loves maths.", "set": "77-78"}, {"id": "vivid", "en": "vivid", "az": "canlı, parlaq", "pos": "adj", "ex": "I have vivid memories of my first school day.", "set": "77-78"}, {"id": "stimulate", "en": "stimulate", "az": "həvəsləndirmək", "pos": "v", "ex": "Good teachers stimulate students to ask questions.", "set": "77-78"}, {"id": "grant", "en": "grant", "az": "vermək", "pos": "v", "ex": "The university granted her a scholarship.", "set": "77-78"}, {"id": "anticipate", "en": "anticipate", "az": "gözləmək, təxmin etmək", "pos": "v", "ex": "We don't anticipate any problems with the exam.", "set": "77-78"}, {"id": "tolerance", "en": "tolerance", "az": "dözümlülük", "pos": "n", "ex": "Tolerance is important in a multicultural society.", "set": "77-78"}, {"id": "stubborn", "en": "stubborn", "az": "inadkar", "pos": "adj", "ex": "My little brother is very stubborn.", "set": "77-78"}, {"id": "provoke", "en": "provoke", "az": "təhrik etmək", "pos": "v", "ex": "His words provoked an argument.", "set": "77-78"}, {"id": "belief", "en": "belief", "az": "inam", "pos": "n", "ex": "She has a strong belief in her abilities.", "set": "77-78"}, {"id": "unemployed", "en": "unemployed", "az": "işsiz", "pos": "adj", "ex": "He has been unemployed for six months.", "set": "77-78"}, {"id": "take-place", "en": "take place", "az": "baş vermək", "pos": "v", "ex": "The concert will take place on Saturday.", "set": "77-78"}, {"id": "reach-goal", "en": "reach the goal", "az": "məqsədə çatmaq", "pos": "v", "ex": "Hard work helps you reach the goal.", "set": "77-78"}];
+const CONFLICTS = {"toss": ["throw-ball"], "throw-ball": ["toss"]};
+let GRAMMAR = [];
+const DEFAULT_TEXTS = { title: "Homework 11 class", home_sub: "Bölməni seç və başla.", vocab_title: "Vocabulary", vocab_sub: "Word exam", vocab_count: 40, vocab_sets: "75-76, 77-78", grammar_title: "Grammar Test", grammar_sub: "" };
+let TEXTS = Object.assign({}, DEFAULT_TEXTS);
+const sayOf = en => String(en).replace(/\([^)]*\)/g, "").replace(/\bsmb\b/g, "somebody").replace(/\bsth\b/g, "something").trim();
+function highlight(ex, en){
+  const s = esc(ex);
+  if (/\*.+?\*/.test(ex)) return s.replace(/\*(.+?)\*/g, "<mark>$1</mark>");
+  const w = sayOf(en).split(/\s+/).filter(x => x.length > 2 && !["somebody","something","one's"].includes(x.toLowerCase()))[0] || sayOf(en);
+  const re = new RegExp("\\b(" + w.slice(0, Math.max(3, w.length - 2)).replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "[a-z]*)", "i");
+  return s.replace(re, "<mark>$1</mark>");
+}
+function applyContent(c){
+  if (!c) return;
+  if (Array.isArray(c.words) && c.words.length >= 5) WORDS = c.words;
+  if (Array.isArray(c.grammar)) GRAMMAR = c.grammar;
+  TEXTS = Object.assign({}, DEFAULT_TEXTS, c.texts || {});
+  applyTexts();
+}
+function applyTexts(){
+  document.querySelectorAll(".js-title").forEach(el => el.textContent = TEXTS.title);
+  document.title = TEXTS.title;
+  $("#h-sub").textContent = TEXTS.home_sub;
+  $("#h-vt").textContent = TEXTS.vocab_title;
+  $("#h-vs").textContent = TEXTS.vocab_sub;
+  $("#h-gt").textContent = TEXTS.grammar_title;
+  $("#h-gs").textContent = TEXTS.grammar_sub || (GRAMMAR.length ? `${GRAMMAR.length} sual` : "Tezliklə");
+  $("#sets-title").textContent = TEXTS.vocab_title;
+}
+function setsList(){
+  const list = String(TEXTS.vocab_sets || "").split(",").map(s => s.trim()).filter(Boolean);
+  WORDS.forEach(w => { const s = w.set || list[0] || "1"; if (!list.includes(s)) list.push(s); });
+  return list.length ? list : ["1"];
+}
+const setOf = w => w.set || setsList()[0];
+function doneMap(){ return store.get("hw11_done") || {}; }
+function doneKey(type, set){ const s = store.get(KEY); return `${s ? s.phone : ""}|${type}|${set || ""}`; }
+function getDone(type, set){ return doneMap()[doneKey(type, set)] || null; }
+function putDone(r){ const m = doneMap(); m[doneKey(r.type, r.set)] = r; store.set("hw11_done", m); }
+async function loadContent(){
+  applyContent(store.get("hw11_content"));
+  try { const r = await api("content"); store.set("hw11_content", r); applyContent(r); } catch (e){}
+}
+
+const KEY = "hw11_student";
+const BUILD_ID = "202610252206";
+/* Yeni versiya varsa, səhifə özü yenilənir (test gedərkən yox) */
+async function checkUpdate(){
+  if (!/^https?:$/.test(location.protocol)) return;
+  const cur = document.querySelector(".screen:not([hidden])");
+  if (cur && !["s-register","s-home","s-sets","s-blocked","s-gempty"].includes(cur.id)) return;
+  try {
+    const r = await fetch(location.pathname + "?nocache=" + Date.now(), { cache: "no-store" });
+    const m = (await r.text()).match(/const BUILD_ID = "([^"]+)"/);
+    if (!m || m[1] === BUILD_ID) return;
+    if (sessionStorage.getItem("hw11_upd") === m[1]) return; // təkrar yenilənmənin qarşısı
+    sessionStorage.setItem("hw11_upd", m[1]);
+    const u = new URL(location.href); u.searchParams.set("v", m[1]); location.replace(u.toString());
+  } catch (e){}
+}
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const store = {
+  get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} },
+  del(k){ try { localStorage.removeItem(k); } catch(e){} }
+};
+function fnv(str){ let h = 0x811c9dc5; for (let i = 0; i < str.length; i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193); } return (h >>> 0).toString(36).toUpperCase().padStart(7, "0").slice(-5); }
+function makeCode(phone, type, ts, score, total){ return fnv([phone, type, ts, score, total, CONFIG.SECRET].join("|")); }
+function fmtPhone(p){ const d = String(p).replace(/\D/g, "").slice(-9); return "+994 " + d.replace(/(\d{2})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4"); }
+function fmtDate(ts){ const d = new Date(ts); const z = n => String(n).padStart(2, "0"); return `${z(d.getDate())}.${z(d.getMonth()+1)}.${d.getFullYear()} ${z(d.getHours())}:${z(d.getMinutes())}`; }
+
+let lastScreen = "s-register";
+function show(id){
+  document.querySelectorAll(".screen").forEach(el => el.hidden = el.id !== id);
+  if (!["s-tlogin","s-teacher","s-editor"].includes(id)) lastScreen = id;
+  window.scrollTo(0, 0);
+}
+
+async function api(action, data = {}){
+  if (!CONFIG.API_URL){ const e = new Error("no_api"); e.code = "no_api"; throw e; }
+  const r = await fetch(CONFIG.API_URL, { method: "POST", body: JSON.stringify(Object.assign({ action }, data)) });
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  const j = await r.json();
+  if (!j.ok){ const e = new Error(j.error || "xeta"); e.code = j.error; throw e; }
+  return j;
+}
+
+/* ---------- Səs ---------- */
+let voice = null;
+function pickVoice(){ const vs = speechSynthesis.getVoices(); voice = vs.find(v => /en[-_]GB/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)) || null; }
+if ("speechSynthesis" in window){ pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function speak(text, rate = 0.85){
+  if (!("speechSynthesis" in window)) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = voice ? voice.lang : "en-GB"; if (voice) u.voice = voice; u.rate = rate;
+  speechSynthesis.speak(u);
+}
+
+/* ---------- Qeydiyyat ---------- */
+const PREFIXES = ["10","50","51","55","60","70","77","99"];
+$("#r-phone").addEventListener("input", e => {
+  let d = e.target.value.replace(/\D/g, "");
+  if (d.startsWith("994")) d = d.slice(3);
+  if (d.startsWith("0")) d = d.slice(1);
+  d = d.slice(0, 9);
+  e.target.value = [d.slice(0,2), d.slice(2,5), d.slice(5,7), d.slice(7,9)].filter(Boolean).join(" ");
+});
+$("#reg-form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const err = $("#r-err"); err.textContent = "";
+  const name = $("#r-name").value.trim(), surname = $("#r-surname").value.trim(), group = $("#r-group").value.trim().toUpperCase();
+  const d = $("#r-phone").value.replace(/\D/g, "");
+  if (name.length < 2) return err.textContent = "Adını yaz.";
+  if (surname.length < 2) return err.textContent = "Soyadını yaz.";
+  if (!group) return err.textContent = "Qrupunu yaz, məsələn 8A və ya N18.1.";
+  if (d.length !== 9) return err.textContent = "Nömrə 9 rəqəm olmalıdır, məsələn 50 123 45 67.";
+  if (!PREFIXES.includes(d.slice(0,2))) return err.textContent = "Operator kodu düz deyil. Nömrə 50, 51, 55, 70, 77, 99 və s. ilə başlamalıdır.";
+  const student = { name, surname, group, phone: "+994" + d, status: "aktiv" };
+  const btn = $("#r-btn"); btn.disabled = true; btn.textContent = "Göndərilir...";
+  try {
+    const r = await api("register", student);
+    student.status = r.status;
+  } catch (ex){
+    if (ex.code !== "no_api"){ err.textContent = "Qeydiyyat alınmadı. İnternet bağlantını yoxla və yenidən cəhd et."; btn.disabled = false; btn.textContent = "Qeydiyyatdan keç"; return; }
+  }
+  btn.disabled = false; btn.textContent = "Qeydiyyatdan keç";
+  store.set(KEY, student);
+  if (student.status === "blok") return show("s-blocked");
+  goHome();
+});
+
+async function checkStatus(){
+  const s = store.get(KEY);
+  if (!s || !CONFIG.API_URL) return true;
+  try {
+    let r = await api("status", { phone: s.phone });
+    if (r.status === "yoxdur") r = await api("register", s);
+    s.status = r.status; store.set(KEY, s);
+  } catch (e){}
+  if (s.status === "blok"){ show("s-blocked"); return false; }
+  return true;
+}
+
+function goHome(){
+  const s = store.get(KEY);
+  if (!s) return show("s-register");
+  if (V) V.token = -1; if (G) G.token = -1;
+  if ("speechSynthesis" in window) speechSynthesis.cancel();
+  const gd = getDone("grammar", "");
+  $("#h-gtile").classList.toggle("done", !!gd);
+  $("#h-who").textContent = `${s.name} ${s.surname}, ${s.group}`;
+  applyTexts();
+  show("s-home");
+}
+$("#h-switch").addEventListener("click", () => {
+  confirmBox("Başqa şagird kimi daxil ol", "Bu telefondakı qeydiyyat silinəcək və yeni qeydiyyat açılacaq.", "Davam et", "Ləğv et").then(ok => {
+    if (!ok) return; store.del(KEY); ["r-name","r-surname","r-group","r-phone"].forEach(id => $("#"+id).value = ""); show("s-register");
+  });
+});
+
+/* ---------- Modal ---------- */
+function confirmBox(title, text, okText, cancelText){
+  return new Promise(res => {
+    $("#m-title").textContent = title; $("#m-text").textContent = text;
+    $("#m-ok").textContent = okText;
+    $("#m-cancel").textContent = cancelText || ""; $("#m-cancel").hidden = !cancelText;
+    $("#modal").hidden = false; $("#m-ok").focus();
+    const done = v => { $("#modal").hidden = true; $("#m-ok").onclick = $("#m-cancel").onclick = null; res(v); };
+    $("#m-ok").onclick = () => done(true); $("#m-cancel").onclick = () => done(false);
+  });
+}
+
+/* ---------- Vocabulary ---------- */
+let V = null;
+function buildOptions(w, src){
+  src = src || WORDS;
+  const bad = CONFLICTS[w.id] || [];
+  const ok = x => x.id !== w.id && x.az !== w.az && !bad.includes(x.id);
+  let picks = shuffle(src.filter(x => x.pos === w.pos && ok(x))).slice(0, 4).map(x => x.az);
+  if (picks.length < 4) picks = picks.concat(shuffle(WORDS.filter(x => x.pos === w.pos && ok(x) && !picks.includes(x.az))).slice(0, 4 - picks.length).map(x => x.az));
+  if (picks.length < 4) picks = picks.concat(shuffle(src.filter(x => x.pos !== w.pos && ok(x) && !picks.includes(x.az))).slice(0, 4 - picks.length).map(x => x.az));
+  return shuffle([...new Set(picks)].concat(w.az));
+}
+function showSets(){
+  const list = setsList();
+  $("#sets-list").innerHTML = list.map(set => {
+    const n = WORDS.filter(w => setOf(w) === set).length;
+    const d = getDone("vocab", set);
+    const sub = !n ? "Tezliklə" : `${Math.min(n, Number(TEXTS.vocab_count) || 40)} sual`;
+    const st = d ? `<span class="st2 ${d.sent ? "ok" : "no"}">${d.score}/${d.total}, ${d.sent ? "yadda saxlanılıb" : "yadda saxlanmayıb"}</span>` : "";
+    return `<button class="tile ${d ? "done" : ""}" data-set="${esc(set)}" ${n ? "" : "disabled"}><span class="ic">${d ? "✓" : "🔤"}</span><span><b>${esc(set)}</b><small>${sub}</small>${st}</span></button>`;
+  }).join("");
+  show("s-sets");
+}
+$("#sets-list").addEventListener("click", e => {
+  const b = e.target.closest("[data-set]"); if (!b || b.disabled) return;
+  const set = b.dataset.set, d = getDone("vocab", set);
+  if (d) showResult(d, true); else startVocab(set);
+});
+let TOKEN = 0;
+let startedAt = 0;
+function startVocab(set){
+  // İkiqat toxunuş testi iki dəfə başlatmasın
+  if (Date.now() - startedAt < 1500) return;
+  startedAt = Date.now();
+  const pool = WORDS.filter(w => setOf(w) === set);
+  const n = Math.min(Number(TEXTS.vocab_count) || 40, pool.length);
+  const local = WORDS; // variantlar həmin blokdan seçilir, çatmasa digər bloklardan
+  V = { set, token: ++TOKEN, items: shuffle(pool).slice(0, n).map(w => ({ w, opts: buildOptions(w, pool.length >= 10 ? pool : local), chosen: null })), i: 0, lock: 0 };
+  show("s-vocab"); renderVocab();
+  // Blok yoxlaması arxa planda: test gözləmədən dərhal açılır
+  const tok = V.token;
+  checkStatus().then(ok => { if (!ok && V && V.token === tok) V.token = -1; });
+}
+function renderVocab(){
+  const it = V.items[V.i];
+  $("#v-progress").textContent = `${V.i + 1} / ${V.items.length}`;
+  $("#v-bar").style.width = (V.i / V.items.length * 100) + "%";
+  $("#v-word").textContent = it.w.en;
+  $("#v-feedback").hidden = true;
+  $("#v-opts").innerHTML = it.opts.map((o, k) => `<button class="opt" type="button" data-k="${k}"><span class="k">${"ABCDE"[k]}</span><span>${esc(o)}</span></button>`).join("");
+  V.lock = Date.now() + 400; // təsadüfi ikiqat toxunuşdan qorunma
+  speak(sayOf(it.w.en));
+}
+$("#v-opts").addEventListener("click", e => {
+  const b = e.target.closest(".opt"); if (!b || !V || Date.now() < V.lock) return;
+  const it = V.items[V.i]; if (it.chosen !== null) return;
+  it.chosen = it.opts[+b.dataset.k];
+  const btns = [...$("#v-opts").children]; btns.forEach(x => x.disabled = true);
+  if (it.chosen === it.w.az){
+    b.classList.add("is-ok");
+    const tok = V.token, idx = V.i;
+    setTimeout(() => { if (V && V.token === tok && V.i === idx) nextVocab(); }, 650);
+  } else {
+    b.classList.add("is-bad");
+    btns[it.opts.indexOf(it.w.az)].classList.add("is-ok");
+    $("#v-correct").textContent = it.w.az;
+    $("#v-ex").innerHTML = highlight(it.w.ex, it.w.en);
+    $("#v-feedback").hidden = false;
+    $("#v-feedback").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+});
+$("#v-speak").addEventListener("click", () => V && speak(sayOf(V.items[V.i].w.en)));
+$("#v-ex-speak").addEventListener("click", () => V && speak(V.items[V.i].w.ex.replace(/\*/g, ""), 0.9));
+$("#v-next").addEventListener("click", () => { const it = V && V.items[V.i]; if (it && it.chosen !== null) nextVocab(); });
+function nextVocab(){
+  if (V.i < V.items.length - 1){ V.i++; renderVocab(); }
+  else finishVocab();
+}
+function finishVocab(){
+  const wrong = V.items.filter(it => it.chosen !== it.w.az);
+  V.token = -1;
+  showResult({
+    type: "vocab", set: V.set, title: `${TEXTS.vocab_title} ${V.set}`, ts: Date.now(),
+    score: V.items.length - wrong.length, total: V.items.length,
+    wrong: wrong.map(it => [it.w.en, it.w.az]),
+    answers: V.items.map(it => ({ id: it.w.id, a: it.chosen }))
+  });
+}
+
+/* ---------- Grammar ---------- */
+let G = null;
+function startGrammar(force){
+  if (!GRAMMAR.length) return show("s-gempty");
+  const gd = getDone("grammar", "");
+  if (gd && !force) return showResult(gd, true);
+  if (Date.now() - startedAt < 1500) return;
+  startedAt = Date.now();
+  checkStatus();
+  G = { qs: GRAMMAR.map(q => ({ q, chosen: null, visited: false })), i: 0, flagged: false };
+  show("s-grammar"); renderGrammar();
+}
+function renderGrammar(){
+  const cur = G.qs[G.i]; cur.visited = true;
+  $("#g-nav").innerHTML = G.qs.map((x, k) => {
+    let c = "";
+    if (x.chosen !== null) c = x.chosen === x.q.a ? "n-ok" : "n-bad";
+    else if ((x.visited && k !== G.i) || G.flagged) c = "n-skip";
+    if (k === G.i) c += " n-cur";
+    return `<button type="button" class="${c}" data-k="${k}" aria-label="Sual ${k+1}">${k+1}</button>`;
+  }).join("");
+  $("#g-num").textContent = `Sual ${G.i + 1} / ${G.qs.length}`;
+  $("#g-q").textContent = cur.q.q;
+  $("#g-opts").innerHTML = cur.q.o.map((o, k) => {
+    let c = "";
+    if (cur.chosen !== null){ if (k === cur.q.a) c = "is-ok"; else if (k === cur.chosen) c = "is-bad"; }
+    return `<button class="opt ${c}" type="button" data-k="${k}" ${cur.chosen !== null ? "disabled" : ""}><span class="k">${"ABCDEF"[k]}</span><span>${esc(o)}</span></button>`;
+  }).join("");
+  $("#g-prev").disabled = G.i === 0;
+  const last = G.i === G.qs.length - 1;
+  $("#g-next").textContent = last ? "İmtahanı bitir" : "Növbəti";
+}
+$("#g-nav").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; G.i = +b.dataset.k; renderGrammar(); });
+$("#g-opts").addEventListener("click", e => {
+  const b = e.target.closest(".opt"); if (!b) return;
+  const cur = G.qs[G.i]; if (cur.chosen !== null) return;
+  cur.chosen = +b.dataset.k; renderGrammar();
+});
+$("#g-prev").addEventListener("click", () => { if (G.i > 0){ G.i--; renderGrammar(); } });
+$("#g-next").addEventListener("click", () => { if (G.i < G.qs.length - 1){ G.i++; renderGrammar(); } else finishGrammar(); });
+$("#g-finish-top").addEventListener("click", () => finishGrammar());
+async function finishGrammar(){
+  const empty = G.qs.map((x, k) => x.chosen === null ? k + 1 : 0).filter(Boolean);
+  if (empty.length){
+    G.flagged = true; renderGrammar();
+    const ok = await confirmBox(`${empty.length} sual cavabsızdır`, `Cavab vermədiyin suallar: ${empty.join(", ")}. Onlar narıncı rəngdədir. Yenə də bitirmək istəyirsən?`, "Qayıt və cavabla", "Yenə də bitir");
+    if (ok){ G.i = empty[0] - 1; renderGrammar(); return; }
+  }
+  const wrong = G.qs.filter(x => x.chosen !== x.q.a); G.token = -1;
+  showResult({
+    type: "grammar", set: "", title: TEXTS.grammar_title, ts: Date.now(),
+    score: G.qs.length - wrong.length, total: G.qs.length,
+    wrong: wrong.map(x => [x.q.q, x.chosen === null ? "cavabsız" : x.q.o[x.q.a]]),
+    answers: G.qs.map((x, k) => ({ id: k, a: x.chosen }))
+  });
+}
+
+/* ---------- Nəticə ---------- */
+let R = null;
+function showResult(r, saved){
+  R = r;
+  if (!saved){ R.sent = false; putDone(R); }
+  $("#res-type").innerHTML = `<span class="badge">11</span> ${esc(r.title)}`;
+  $("#res-score").innerHTML = `${r.score}<small> / ${r.total}</small>`;
+  $("#res-pct").textContent = `${Math.round(r.score / r.total * 100)}% düz cavab`;
+  $("#res-wrong-wrap").hidden = !r.wrong.length;
+  $("#res-wrong-title").textContent = r.type === "vocab" ? "Səhv etdiyin sözlər" : "Səhv və ya cavabsız suallar";
+  $("#res-wrong").innerHTML = r.wrong.map(([a, b]) => `<li><span>${esc(a)}</span><span>${esc(b)}</span></li>`).join("");
+  $("#res-state").className = "sendstate" + (R.sent ? " ok" : "");
+  $("#res-state").textContent = R.sent ? "Bu nəticə yadda saxlanılıb və müəllim onu görür." : (saved ? "Bu nəticə hələ yadda saxlanmayıb. Düyməyə bas." : "");
+  $("#res-send").disabled = !!R.sent; $("#res-send").textContent = R.sent ? "Yadda saxlanılıb ✓" : "Nəticəni yadda saxla";
+  show("s-result");
+}
+$("#res-send").addEventListener("click", async () => {
+  const s = store.get(KEY); if (!s || !R) return;
+  const code = makeCode(s.phone, R.type, R.ts, R.score, R.total);
+  const st = $("#res-state"); st.className = "sendstate"; st.textContent = "Yadda saxlanılır...";
+  $("#res-send").disabled = true;
+  try {
+    await api("submit", { phone: s.phone, name: s.name, surname: s.surname, group: s.group, type: R.type, set: R.set || "", ts: R.ts, clientScore: R.score, total: R.total, code, answers: R.answers });
+    R.sent = true; putDone(R); st.className = "sendstate ok"; st.textContent = "Nəticə yadda saxlanıldı. Müəllim onu paneldə görür.";
+    $("#res-send").textContent = "Yadda saxlanılıb ✓";
+  } catch (e){
+    $("#res-send").disabled = false;
+    if (e.code === "blocked"){ st.className = "sendstate bad"; st.textContent = "Giriş bağlanıb. Nəticə qəbul olunmadı."; return; }
+    if (e.code === "not_registered"){ st.className = "sendstate bad"; st.textContent = "Qeydiyyat tapılmadı. Ana səhifədən çıxıb yenidən qeydiyyatdan keç."; return; }
+    st.className = "sendstate bad"; st.textContent = "Yadda saxlamaq alınmadı. İnterneti yoxla və düyməyə yenidən bas.";
+  }
+});
+
+$("#res-redo").addEventListener("click", async () => {
+  if (!R) return;
+  if (!R.sent && !(await confirmBox("Nəticə hələ yadda saxlanmayıb", "Yenidən işləsən, bu nəticə silinəcək. Əvvəlcə «Nəticəni yadda saxla» düyməsinə bas.", "Yenə də yenidən işlə", "Geri"))) return;
+  if (R.type === "vocab") startVocab(R.set); else startGrammar(true);
+});
+
+/* ---------- Müəllim paneli ---------- */
+let T = null, tTab = "table";
+$("#t-form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const pw = $("#t-pass").value; $("#t-err").textContent = "";
+  $("#t-btn").disabled = true;
+  try { await loadTeacher(pw); store.set("hw11_t", pw); show("s-teacher"); }
+  catch (ex){ $("#t-err").textContent = ex.code === "no_api" ? "Server qoşulmayıb: index.html faylında API_URL boşdur." : ex.code === "wrong_password" ? "Şifrə düz deyil." : "Yükləmək alınmadı. İnterneti yoxla."; }
+  $("#t-btn").disabled = false;
+});
+async function loadTeacher(pw){
+  const r = await api("teacher_list", { password: pw });
+  T = { pw, students: r.students, results: r.results };
+  const groups = [...new Set(T.students.map(s => s.group))].sort((a, b) => a.localeCompare(b, "az", { numeric: true }));
+  const sel = $("#t-group"), keep = sel.value;
+  sel.innerHTML = `<option value="">Bütün qruplar</option>` + groups.map(g => `<option>${esc(g)}</option>`).join("");
+  sel.value = groups.includes(keep) ? keep : "";
+  renderTeacher();
+}
+const shortName = s => `${s.name} ${(s.surname || "").trim().charAt(0).toLocaleUpperCase("az")}.`;
+const typeName = (t, r) => t === "vocab" ? ((TEXTS.vocab_title || "Vocabulary") + " " + ((r && r.set) || "")).trim() : (TEXTS.grammar_title || "Grammar");
+const testKey = r => r.type === "vocab" ? "vocab|" + (r.set || "") : "grammar|";
+function testOptions(){
+  const opts = setsList().map(s => ["vocab|" + s, `${TEXTS.vocab_title || "Vocabulary"} ${s}`]);
+  if (GRAMMAR.length || T.results.some(r => r.type === "grammar")) opts.push(["grammar|", TEXTS.grammar_title || "Grammar Test"]);
+  T.results.forEach(r => { const k = testKey(r); if (!opts.some(o => o[0] === k)) opts.push([k, typeName(r.type, r)]); });
+  return opts;
+}
+function renderTeacher(){
+  $("#t-scount").textContent = T.students.length;
+  $("#t-rcount").textContent = T.results.length;
+  $("#t-bcount").textContent = T.students.filter(s => s.status === "blok").length;
+  const g = $("#t-group").value, q = $("#t-search").value.trim().toLowerCase();
+  const match = x => (!g || x.group === g) && (!q || `${x.name} ${x.surname}`.toLowerCase().includes(q));
+  const ts = $("#t-test"); ts.hidden = tTab !== "table";
+  const opts = testOptions(), keep = ts.value;
+  ts.innerHTML = opts.map(([k, l]) => `<option value="${esc(k)}">${esc(l)}</option>`).join("");
+  if (opts.some(o => o[0] === keep)) ts.value = keep;
+  let html = "";
+  if (tTab === "table"){
+    const key = ts.value;
+    const list = T.students.filter(match).slice().sort((a, b) => (a.name + a.surname).localeCompare(b.name + b.surname, "az"));
+    let done = 0;
+    const rows = list.map((s, i) => {
+      const rs = T.results.filter(r => r.phone === s.phone && testKey(r) === key); // ən yenisi birinci gəlir
+      const last = rs[0]; if (last) done++;
+      const extra = rs.length > 1 ? ` <span class="g">(${rs.length} dəfə)</span>` : "";
+      return `<tr class="${last ? "" : "miss"}"><td class="n">${i + 1}</td><td>${esc(shortName(s))}${!g ? ` <span class="g">${esc(s.group)}</span>` : ""}${s.status === "blok" ? ` <span class="g">bloklu</span>` : ""}</td>
+        <td class="r">${last ? `${last.score}/${last.total}${extra}` : "İşləməyib"}</td></tr>`;
+    }).join("");
+    html = list.length ? `<div class="sum"><span>İşləyib: <b>${done}</b> / ${list.length}</span><span>İşləməyib: <b>${list.length - done}</b></span></div>
+      <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>№</th><th>Şagird</th><th style="text-align:right">Nəticə</th></tr></thead><tbody>${rows}</tbody></table></div>`
+      : `<div class="empty">${g ? "Bu qrupda" : "Hələ"} qeydiyyatdan keçən şagird yoxdur.</div>`;
+  } else if (tTab === "students"){
+    const list = T.students.filter(match);
+    html = list.length ? list.map(s => {
+      const rs = T.results.filter(r => r.phone === s.phone);
+      return `<div class="row"><div class="top"><div><div class="name">${esc(s.name)} ${esc(s.surname)}</div>
+        <div class="meta">${esc(s.group)} · Qeydiyyat: ${esc(s.date)} · ${rs.length} nəticə</div></div>
+        <span class="st ${s.status}">${s.status === "blok" ? "Bloklu" : "Aktiv"}</span></div>
+        <button class="mini ${s.status === "blok" ? "" : "danger"}" data-block="${esc(s.phone)}" data-to="${s.status === "blok" ? "aktiv" : "blok"}">${s.status === "blok" ? "Blokdan çıxar" : "Blok et"}</button>
+        ${rs.length ? `<details><summary>Nəticələrə bax</summary>${rs.map(r => `<div class="meta" style="margin-top:6px">${esc(typeName(r.type, r))}: <b>${r.score}/${r.total}</b> · ${esc(r.date)}</div>`).join("")}</details>` : ""}
+      </div>`;
+    }).join("") : `<div class="empty">Hələ qeydiyyatdan keçən şagird yoxdur.</div>`;
+  } else {
+    const list = T.results.filter(match);
+    html = list.length ? list.map(r => `<div class="row"><div class="top"><div><div class="name">${esc(r.name)} ${esc(r.surname)}</div><div class="meta">${esc(r.group)} · ${esc(typeName(r.type, r))} · ${esc(r.date)}</div></div><div style="text-align:right"><div class="pct">${r.score}/${r.total}</div><div class="meta">${r.total ? Math.round(r.score / r.total * 100) : 0}%</div></div></div>
+      ${r.note ? `<div class="meta" style="color:var(--bad)">${esc(r.note)}</div>` : ""}
+      ${r.wrong ? `<details><summary>Səhvlər</summary><div class="meta" style="margin-top:6px">${esc(r.wrong)}</div></details>` : ""}</div>`).join("") : `<div class="empty">Hələ yadda saxlanan nəticə yoxdur.</div>`;
+  }
+  $("#t-list").innerHTML = html;
+}
+document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click", () => {
+  tTab = b.dataset.tab; document.querySelectorAll("[data-tab]").forEach(x => x.setAttribute("aria-selected", x === b)); renderTeacher();
+}));
+$("#t-group").addEventListener("change", renderTeacher);
+$("#t-test").addEventListener("change", renderTeacher);
+$("#t-search").addEventListener("input", renderTeacher);
+$("#t-refresh").addEventListener("click", async () => { try { await loadTeacher(T.pw); } catch (e){} });
+$("#t-list").addEventListener("click", async e => {
+  const b = e.target.closest("[data-block]"); if (!b) return;
+  const to = b.dataset.to, s = T.students.find(x => x.phone === b.dataset.block);
+  if (to === "blok" && !(await confirmBox("Şagirdi blok et", `${s.name} ${s.surname} testlərə girə bilməyəcək.`, "Blok et", "Ləğv et"))) return;
+  b.disabled = true;
+  try { await api("set_status", { password: T.pw, phone: s.phone, status: to }); s.status = to; renderTeacher(); }
+  catch (ex){ b.disabled = false; alert("Dəyişmək alınmadı. İnterneti yoxla."); }
+});
+
+$("#t-logout").addEventListener("click", () => { store.del("hw11_t"); T = null; $("#t-pass").value = ""; show("s-tlogin"); });
+
+/* ---------- Redaktə ---------- */
+let E = null;
+function toast(msg){ const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => t.hidden = true, 3500); }
+const POS = [["n","isim"],["v","feil"],["adj","sifət"],["adv","zərf, digər"]];
+const LET = "ABCDE";
+$("#t-edit").addEventListener("click", openEditor);
+function openEditor(){
+  E = { texts: Object.assign({}, TEXTS), words: WORDS.map(w => Object.assign({}, w)), grammar: GRAMMAR.map(g => ({ q: g.q, o: g.o.slice(), a: g.a })), dirty: false };
+  const map = { "e-title":"title", "e-sub":"home_sub", "e-vt":"vocab_title", "e-vs":"vocab_sub", "e-vc":"vocab_count", "e-vsets":"vocab_sets", "e-gt":"grammar_title", "e-gs":"grammar_sub" };
+  Object.entries(map).forEach(([id, k]) => { const el = $("#"+id); el.value = E.texts[k] ?? ""; el.oninput = () => { E.texts[k] = id === "e-vc" ? Number(el.value) : el.value; E.dirty = true; }; });
+  $("#e-wsearch").value = "";
+  renderWords(); renderGram(); show("s-editor");
+}
+function edSets(){
+  const list = String(E.texts.vocab_sets || "").split(",").map(s => s.trim()).filter(Boolean);
+  E.words.forEach(w => { if (w.set && !list.includes(w.set)) list.push(w.set); });
+  return list.length ? list : ["1"];
+}
+function renderWords(){
+  const q = $("#e-wsearch").value.trim().toLowerCase();
+  const sets = edSets(), sel = $("#e-wset"), keep = sel.value;
+  sel.innerHTML = sets.map(s => `<option value="${esc(s)}">Blok ${esc(s)} (${E.words.filter(w => (w.set || sets[0]) === s).length} söz)</option>`).join("");
+  sel.value = sets.includes(keep) ? keep : sets[0];
+  const cur = sel.value;
+  $("#e-wcount").textContent = `(${E.words.length})`;
+  $("#e-words").innerHTML = E.words.map((w, i) => ((w.set || sets[0]) === cur && (!q || (w.en + " " + w.az).toLowerCase().includes(q))) ? `<div class="ed-row" data-i="${i}">
+    <div class="grid"><div><label>İngiliscə</label><input data-f="en" value="${esc(w.en)}" maxlength="60" autocapitalize="none"></div>
+    <div><label>Tərcümə</label><input data-f="az" value="${esc(w.az)}" maxlength="60"></div></div>
+    <label>Nümunə cümlə (söz avtomatik vurğulanır)</label><textarea data-f="ex" maxlength="200">${esc(w.ex || "")}</textarea>
+    <div class="foot"><span><select data-f="pos" aria-label="Nitq hissəsi" style="width:auto">${POS.map(([v, l]) => `<option value="${v}" ${w.pos === v ? "selected" : ""}>${l}</option>`).join("")}</select>
+    <select data-f="set" aria-label="Blok" style="width:auto">${sets.map(s => `<option value="${esc(s)}" ${(w.set || sets[0]) === s ? "selected" : ""}>${esc(s)}</option>`).join("")}</select></span>
+    <button class="mini danger" data-del="w" type="button" style="margin:0">Sil</button></div></div>` : "").join("");
+}
+function renderGram(){
+  $("#e-gcount").textContent = `(${E.grammar.length})`;
+  $("#e-grammar").innerHTML = E.grammar.length ? E.grammar.map((g, i) => `<div class="ed-row" data-g="${i}">
+    <label>Sual ${i + 1}</label><textarea data-f="q" maxlength="300">${esc(g.q)}</textarea>
+    <div class="grid">${[0,1,2,3,4].map(k => `<div><label>${LET[k]} variantı${k > 3 ? " (istəyə görə)" : ""}</label><input data-o="${k}" value="${esc(g.o[k] || "")}" maxlength="120"></div>`).join("")}</div>
+    <div class="foot"><label style="margin:0">Düz cavab: <select data-f="a" style="width:auto;display:inline-block">${[0,1,2,3,4].map(k => `<option value="${k}" ${g.a === k ? "selected" : ""}>${LET[k]}</option>`).join("")}</select></label>
+    <button class="mini danger" data-del="g" type="button" style="margin:0">Sil</button></div></div>`).join("") : `<div class="empty">Hələ sual yoxdur. «Sual əlavə et» bas.</div>`;
+}
+$("#e-wsearch").addEventListener("input", renderWords);
+$("#e-words").addEventListener("input", e => { const row = e.target.closest("[data-i]"); if (!row || !e.target.dataset.f) return; E.words[+row.dataset.i][e.target.dataset.f] = e.target.value; E.dirty = true; });
+$("#e-words").addEventListener("change", e => { const row = e.target.closest("[data-i]"); const f = e.target.dataset.f; if (!row || (f !== "pos" && f !== "set")) return; E.words[+row.dataset.i][f] = e.target.value; E.dirty = true; if (f === "set") renderWords(); });
+$("#e-wset").addEventListener("change", renderWords);
+$("#e-vsets").addEventListener("change", () => renderWords());
+$("#e-grammar").addEventListener("input", e => {
+  const row = e.target.closest("[data-g]"); if (!row) return; const g = E.grammar[+row.dataset.g];
+  if (e.target.dataset.o !== undefined) g.o[+e.target.dataset.o] = e.target.value;
+  else if (e.target.dataset.f === "q") g.q = e.target.value;
+  E.dirty = true;
+});
+$("#e-grammar").addEventListener("change", e => { const row = e.target.closest("[data-g]"); if (!row || e.target.dataset.f !== "a") return; E.grammar[+row.dataset.g].a = +e.target.value; E.dirty = true; });
+document.addEventListener("click", async e => {
+  const b = e.target.closest("[data-del]"); if (!b || !E) return;
+  if (b.dataset.del === "w"){ const i = +b.closest("[data-i]").dataset.i; if (!(await confirmBox("Sözü sil", `«${E.words[i].en}» siyahıdan silinsin?`, "Sil", "Ləğv et"))) return; E.words.splice(i, 1); renderWords(); }
+  else { const i = +b.closest("[data-g]").dataset.g; if (!(await confirmBox("Sualı sil", `Sual ${i + 1} silinsin?`, "Sil", "Ləğv et"))) return; E.grammar.splice(i, 1); renderGram(); }
+  E.dirty = true;
+});
+$("#e-wadd").addEventListener("click", () => {
+  E.words.unshift({ id: "w" + Date.now().toString(36), en: "", az: "", pos: "n", ex: "", set: $("#e-wset").value });
+  $("#e-wsearch").value = ""; renderWords(); E.dirty = true;
+  const f = $("#e-words input"); if (f) f.focus();
+});
+$("#e-gadd").addEventListener("click", () => {
+  E.grammar.push({ q: "", o: ["", "", "", ""], a: 0 }); renderGram(); E.dirty = true;
+  const rows = $("#e-grammar").querySelectorAll("textarea"); rows[rows.length - 1].focus();
+});
+$("#e-back").addEventListener("click", async () => {
+  if (E && E.dirty && !(await confirmBox("Dəyişikliklər saxlanmayıb", "Çıxsan, etdiyin dəyişikliklər itəcək.", "Çıx", "Qal"))) return;
+  E = null; show("s-teacher");
+});
+$("#e-save").addEventListener("click", async () => {
+  const s0 = edSets()[0];
+  const words = E.words.map(w => ({ id: w.id, en: w.en.trim(), az: w.az.trim(), pos: w.pos, ex: (w.ex || "").trim(), set: w.set || s0 }));
+  const badW = words.findIndex(w => !w.en || !w.az);
+  if (badW > -1){ $("#e-wsearch").value = ""; $("#e-wset").value = words[badW].set; renderWords(); toast("Hər sözün ingiliscəsi və tərcüməsi yazılmalıdır."); const r = $("#e-words").querySelector(`[data-i="${badW}"]`); if (r) r.scrollIntoView({ block: "center" }); return; }
+  if (words.length < 5) return toast("Ən azı 5 söz olmalıdır.");
+  const grammar = E.grammar.map(g => { const o = g.o.map(x => (x || "").trim()); while (o.length && !o[o.length - 1]) o.pop(); return { q: g.q.trim(), o, a: g.a }; });
+  const badG = grammar.findIndex(g => !g.q || g.o.length < 2 || g.o.slice(0, g.o.length).some(x => !x) || g.a >= g.o.length);
+  if (badG > -1){ toast(`Sual ${badG + 1}: sual, ən azı 2 variant yazılmalı və düz cavab boş variant olmamalıdır.`); const r = $("#e-grammar").children[badG]; if (r) r.scrollIntoView({ block: "center" }); return; }
+  const texts = Object.assign({}, E.texts, { vocab_count: Math.max(5, Math.min(200, Number(E.texts.vocab_count) || 40)) });
+  const btn = $("#e-save"); btn.disabled = true; btn.textContent = "Saxlanılır...";
+  try {
+    await api("save_content", { password: T.pw, texts, words, grammar });
+    const c = { texts, words, grammar }; store.set("hw11_content", c); applyContent(c);
+    E.dirty = false; toast("Yadda saxlandı. Şagirdlər səhifəni açanda yeni versiyanı görəcək.");
+  } catch (ex){ toast(ex.code === "wrong_password" ? "Şifrə dəyişib, paneldən çıxıb yenidən daxil ol." : "Saxlamaq alınmadı. İnterneti yoxla və yenidən bas."); }
+  btn.disabled = false; btn.textContent = "Yadda saxla";
+});
+
+/* ---------- Naviqasiya ---------- */
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-go]"); if (!b) return;
+  const to = b.dataset.go;
+  if (to === "home") goHome();
+  else if (to === "leave"){
+    confirmBox("Ana səhifəyə qayıt", "Test yarımçıq qalacaq və nəticə yadda saxlanmayacaq.", "Ana səhifəyə qayıt", "Testə davam et").then(ok => { if (ok) goHome(); });
+  }
+  else if (to === "sets") showSets();
+  else if (to === "grammar") startGrammar();
+  else if (to === "back"){ location.hash = ""; store.get(KEY) ? goHome() : show("s-register"); }
+  else if (to === "teacher") openTeacher();
+});
+async function openTeacher(){
+  const pw = store.get("hw11_t");
+  if (pw){
+    show("s-teacher"); $("#t-list").innerHTML = `<div class="empty">Yüklənir...</div>`;
+    try { await loadTeacher(pw); return; } catch (e){ if (e.code !== "wrong_password"){ $("#t-list").innerHTML = `<div class="empty">Yükləmək alınmadı. İnterneti yoxla və «Yenilə» bas.</div>`; T = T || { pw, students: [], results: [] }; return; } store.del("hw11_t"); }
+  }
+  show("s-tlogin");
+}
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") checkUpdate(); });
+function boot(){
+  checkUpdate();
+  loadContent();
+  if (location.hash === "#muellim") return openTeacher();
+  const s = store.get(KEY);
+  if (!s) return show("s-register");
+  if (s.status === "blok") return show("s-blocked");
+  goHome(); checkStatus();
+}
+boot();
+</script>
+</body>
+</html>
