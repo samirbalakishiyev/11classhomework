@@ -443,6 +443,21 @@ async function loadContent(){
 }
 
 const KEY = "hw11_student";
+const BUILD_ID = "202610252201";
+/* Yeni versiya varsa, səhifə özü yenilənir (test gedərkən yox) */
+async function checkUpdate(){
+  if (!/^https?:$/.test(location.protocol)) return;
+  const cur = document.querySelector(".screen:not([hidden])");
+  if (cur && !["s-register","s-home","s-sets","s-blocked","s-gempty"].includes(cur.id)) return;
+  try {
+    const r = await fetch(location.pathname + "?nocache=" + Date.now(), { cache: "no-store" });
+    const m = (await r.text()).match(/const BUILD_ID = "([^"]+)"/);
+    if (!m || m[1] === BUILD_ID) return;
+    if (sessionStorage.getItem("hw11_upd") === m[1]) return; // təkrar yenilənmənin qarşısı
+    sessionStorage.setItem("hw11_upd", m[1]);
+    const u = new URL(location.href); u.searchParams.set("v", m[1]); location.replace(u.toString());
+  } catch (e){}
+}
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -936,7 +951,9 @@ async function openTeacher(){
   }
   show("s-tlogin");
 }
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") checkUpdate(); });
 function boot(){
+  checkUpdate();
   loadContent();
   if (location.hash === "#muellim") return openTeacher();
   const s = store.get(KEY);
