@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1F3C88">
 <title>Homework 11 class</title>
+<meta name="description" content="Vocabulary və Grammar Test. Qeydiyyatdan keç və başla.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Homework 11 class">
+<meta property="og:description" content="Vocabulary və Grammar Test. Qeydiyyatdan keç və başla.">
+<meta property="og:url" content="https://samirbalakishiyev.github.io/11classhomework/">
+<meta property="og:image" content="https://samirbalakishiyev.github.io/11classhomework/preview.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
 <style>
 :root{
@@ -139,6 +149,20 @@ mark{background:var(--mark);color:var(--mark-ink);padding:0 3px;border-radius:4p
 details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
 .code{font-weight:700;letter-spacing:.5px}
 .empty{text-align:center;color:var(--muted);padding:26px 10px}
+.sig{position:fixed;right:calc(14px + env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));background:none;border:0;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--muted);opacity:.45;padding:8px;z-index:5}
+.ed-sec{margin-top:22px}
+.ed-sec > h2{display:flex;justify-content:space-between;align-items:center}
+.ed-row{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px}
+.ed-row .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ed-row input,.ed-row select,.ed-row textarea,.ed-home input{width:100%;padding:10px 11px;border-radius:10px;border:2px solid var(--line);background:var(--bg);font-size:16px}
+.ed-row textarea{resize:vertical;min-height:58px;font-family:inherit}
+.ed-row label,.ed-home label{display:block;font-size:13px;color:var(--muted);margin:6px 0 3px;font-weight:600}
+.ed-row .foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.ed-home{background:var(--surface);border:2px dashed var(--brand);border-radius:18px;padding:14px}
+.ed-home .big{font-family:var(--serif);font-size:24px;font-weight:700}
+.savebar{position:sticky;bottom:0;padding:12px 0 calc(12px + env(safe-area-inset-bottom,0px));background:var(--bg);margin-top:16px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:12px;font-size:15px;z-index:30;max-width:90vw}
+.toast[hidden]{display:none}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 </style>
 </head>
@@ -147,7 +171,7 @@ details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
 
   <!-- QEYDİYYAT -->
   <section class="screen" id="s-register" hidden>
-    <div class="brandline"><span class="badge">11</span> Homework 11 class</div>
+    <div class="brandline"><span class="badge">11</span> <span class="js-title">Homework 11 class</span></div>
     <h1>Qeydiyyatdan keç</h1>
     <p class="muted">Bir dəfə qeydiyyatdan keçirsən, sonra nəticələrin müəllimə öz adınla gedir.</p>
     <form id="reg-form" class="card" novalidate>
@@ -162,8 +186,7 @@ details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
       <div class="err" id="r-err" role="alert"></div>
       <button class="btn" id="r-btn" type="submit">Qeydiyyatdan keç</button>
     </form>
-    <p class="small muted" style="margin-top:18px;text-align:center"><button class="link" data-go="teacher">Müəllim paneli</button></p>
-  </section>
+      </section>
 
   <!-- BLOK -->
   <section class="screen" id="s-blocked" hidden>
@@ -174,15 +197,14 @@ details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
   <!-- ANA EKRAN -->
   <section class="screen" id="s-home" hidden>
     <div class="brandline"><span class="badge">11</span> <span id="h-who"></span></div>
-    <h1>Homework 11 class</h1>
-    <p class="muted">Bölməni seç və başla.</p>
+    <h1 class="js-title">Homework 11 class</h1>
+    <p class="muted" id="h-sub">Bölməni seç və başla.</p>
     <div class="tiles">
-      <button class="tile" data-go="vocab"><span class="ic">🔤</span><span><b>Vocabulary</b><small>Word exam, 40 söz</small></span></button>
-      <button class="tile g" data-go="grammar"><span class="ic">📝</span><span><b>Grammar Test</b><small id="h-gcount">Test</small></span></button>
+      <button class="tile" data-go="vocab"><span class="ic">🔤</span><span><b id="h-vt">Vocabulary</b><small id="h-vs">Word exam, 40 söz</small></span></button>
+      <button class="tile g" data-go="grammar"><span class="ic">📝</span><span><b id="h-gt">Grammar Test</b><small id="h-gs">Test</small></span></button>
     </div>
     <p class="small muted" style="margin-top:26px;text-align:center">
-      <button class="link" id="h-switch">Başqa şagird kimi daxil ol</button><br>
-      <button class="link" data-go="teacher">Müəllim paneli</button>
+      <button class="link" id="h-switch">Başqa şagird kimi daxil ol</button>
     </p>
   </section>
 
@@ -257,7 +279,7 @@ details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
 
   <!-- MÜƏLLİM PANELİ -->
   <section class="screen" id="s-teacher" hidden>
-    <div class="topbar"><button class="link" data-go="back">Çıx</button><button class="mini" id="t-refresh" type="button" style="margin:0">Yenilə</button></div>
+    <div class="topbar"><button class="link" data-go="back">Geri</button><span><button class="mini" id="t-refresh" type="button" style="margin:0">Yenilə</button> <button class="mini" id="t-edit" type="button" style="margin:0">Redaktə</button></span></div>
     <h1>Müəllim paneli</h1>
     <div class="stats"><div><b id="t-scount">0</b><span class="small muted">şagird</span></div><div><b id="t-rcount">0</b><span class="small muted">nəticə</span></div><div><b id="t-bcount">0</b><span class="small muted">bloklu</span></div></div>
     <div class="tabs" role="tablist">
@@ -269,6 +291,38 @@ details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
       <input id="t-search" type="search" placeholder="Ad və ya nömrə" aria-label="Axtar">
     </div>
     <div id="t-list"></div>
+    <p style="text-align:center;margin-top:20px"><button class="link" id="t-logout">Paneldən çıx (şifrəni unut)</button></p>
+  </section>
+
+  <!-- REDAKTƏ -->
+  <section class="screen" id="s-editor" hidden>
+    <div class="topbar"><button class="link" id="e-back">Panelə qayıt</button><b>Redaktə</b></div>
+    <div class="ed-sec" style="margin-top:6px">
+      <h2>Ana ekran</h2>
+      <div class="ed-home">
+        <label for="e-title">Başlıq</label><input id="e-title" class="big" maxlength="60">
+        <label for="e-sub">Başlığın altındakı yazı</label><input id="e-sub" maxlength="120">
+        <div class="ed-row" style="margin-top:12px;background:var(--bg)">
+          <label for="e-vt">🔤 Birinci blokun adı</label><input id="e-vt" maxlength="40">
+          <label for="e-vs">Altındakı yazı</label><input id="e-vs" maxlength="80">
+          <label for="e-vc">Testdə neçə söz soruşulsun</label><input id="e-vc" type="number" min="5" max="200" inputmode="numeric">
+        </div>
+        <div class="ed-row" style="background:var(--bg);margin-bottom:0">
+          <label for="e-gt">📝 İkinci blokun adı</label><input id="e-gt" maxlength="40">
+          <label for="e-gs">Altındakı yazı (boş qalsa sual sayı yazılır)</label><input id="e-gs" maxlength="80">
+        </div>
+      </div>
+    </div>
+    <div class="ed-sec">
+      <h2><span>Sözlər <span class="muted small" id="e-wcount"></span></span><button class="mini" id="e-wadd" type="button" style="margin:0">Söz əlavə et</button></h2>
+      <input id="e-wsearch" type="search" placeholder="Sözü axtar" aria-label="Sözü axtar" style="width:100%;padding:11px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);margin-bottom:10px">
+      <div id="e-words"></div>
+    </div>
+    <div class="ed-sec">
+      <h2><span>Grammar testləri <span class="muted small" id="e-gcount"></span></span><button class="mini" id="e-gadd" type="button" style="margin:0">Sual əlavə et</button></h2>
+      <div id="e-grammar"></div>
+    </div>
+    <div class="savebar"><button class="btn" id="e-save" type="button">Yadda saxla</button></div>
   </section>
 
   <div class="modal" id="modal" hidden>
@@ -279,7 +333,9 @@ details summary{cursor:pointer;color:var(--brand);font-size:14px;margin-top:6px}
       <button class="btn ghost" id="m-cancel" type="button"></button>
     </div>
   </div>
+  <div class="toast" id="toast" role="status" hidden></div>
 </div>
+<button class="sig" data-go="teacher" aria-label="S">S</button>
 
 <script>
 /* ======================= AYARLAR ======================= */
@@ -290,9 +346,39 @@ const CONFIG = {
   SECRET: "hw11-98e0d6b18acc"            // Code.gs-dəki SECRET ilə eyni olmalıdır
 };
 /* ======================================================= */
-const WORDS = [{"id": "suit-n", "en": "suit (n)", "say": "suit", "az": "kostyum", "pos": "n", "ex": "He wore a dark *suit* to the job interview."}, {"id": "suit-v", "en": "suit (v)", "say": "suit", "az": "yaraşmaq", "pos": "v", "ex": "That blue colour really *suits* you."}, {"id": "capital", "en": "capital", "say": "capital", "az": "paytaxt", "pos": "n", "ex": "Baku is the *capital* of Azerbaijan."}, {"id": "throw-ball", "en": "throw a ball", "say": "throw a ball", "az": "top atmaq", "pos": "v", "ex": "The boy tried to *throw a ball* over the fence."}, {"id": "convenient", "en": "convenient", "say": "convenient", "az": "rahat", "pos": "adj", "ex": "The bus stop is very *convenient* for me."}, {"id": "cliff", "en": "cliff", "say": "cliff", "az": "qayalıq", "pos": "n", "ex": "We stood on the edge of the *cliff* and looked at the sea."}, {"id": "rush", "en": "rush", "say": "rush", "az": "tələsmək", "pos": "v", "ex": "Don't *rush*, we have plenty of time."}, {"id": "private", "en": "private", "say": "private", "az": "özəl", "pos": "adj", "ex": "She goes to a *private* school."}, {"id": "self-worth", "en": "self-worth", "say": "self-worth", "az": "özünə dəyər", "pos": "n", "ex": "Good friends help you build your *self-worth*."}, {"id": "dreadful", "en": "dreadful", "say": "dreadful", "az": "dəhşətli", "pos": "adj", "ex": "The weather was *dreadful* all weekend."}, {"id": "eyebrow", "en": "eyebrow", "say": "eyebrow", "az": "qaş", "pos": "n", "ex": "He raised one *eyebrow* in surprise."}, {"id": "running-water", "en": "running water", "say": "running water", "az": "axar su", "pos": "n", "ex": "The old village house had no *running water*."}, {"id": "enthusiastic", "en": "enthusiastic", "say": "enthusiastic", "az": "həvəsli", "pos": "adj", "ex": "The students were *enthusiastic* about the trip."}, {"id": "ticket", "en": "ticket", "say": "ticket", "az": "bilet", "pos": "n", "ex": "I bought a *ticket* for the concert."}, {"id": "transmit", "en": "transmit", "say": "transmit", "az": "ötürmək", "pos": "v", "ex": "Mosquitoes can *transmit* diseases."}, {"id": "tell-story", "en": "tell a story", "say": "tell a story", "az": "hekayə danışmaq", "pos": "v", "ex": "Grandma likes to *tell a story* before bedtime."}, {"id": "wallet", "en": "wallet", "say": "wallet", "az": "pul çantası", "pos": "n", "ex": "I left my *wallet* at home."}, {"id": "toss", "en": "toss", "say": "toss", "az": "atmaq", "pos": "v", "ex": "He *tossed* a coin to decide who would start."}, {"id": "bulwark", "en": "bulwark", "say": "bulwark", "az": "müdafiə divarı", "pos": "n", "ex": "The soldiers built a *bulwark* to protect the city."}, {"id": "glass", "en": "glass", "say": "glass", "az": "şüşə, stəkan", "pos": "n", "ex": "Can I have a *glass* of water, please?"}, {"id": "regardless", "en": "regardless of", "say": "regardless of", "az": "asılı olmayaraq", "pos": "adv", "ex": "Everyone can join the club, *regardless of* age."}, {"id": "freezing", "en": "freezing", "say": "freezing", "az": "dondurucu", "pos": "adj", "ex": "It's *freezing* outside, so wear a warm coat."}, {"id": "weigh", "en": "weigh", "say": "weigh", "az": "çəkmək (çəkini)", "pos": "v", "ex": "The nurse will *weigh* the baby every week."}, {"id": "veteran", "en": "veteran", "say": "veteran", "az": "veteran", "pos": "n", "ex": "My grandfather is a war *veteran*."}, {"id": "take-notice", "en": "take notice", "say": "take notice", "az": "nəzərə almaq", "pos": "v", "ex": "Nobody seemed to *take notice* of the warning signs."}, {"id": "aid", "en": "aid", "say": "aid", "az": "yardım", "pos": "n", "ex": "The country sent food *aid* to the flood victims."}, {"id": "public", "en": "public", "say": "public", "az": "ictimai", "pos": "adj", "ex": "This is a *public* park, so everyone can use it."}, {"id": "so", "en": "so", "say": "so", "az": "buna görə", "pos": "adv", "ex": "It was raining, *so* we stayed at home."}, {"id": "retrieve", "en": "retrieve", "say": "retrieve", "az": "bərpa etmək", "pos": "v", "ex": "He managed to *retrieve* the lost files."}, {"id": "zoo", "en": "zoo", "say": "zoo", "az": "zoopark", "pos": "n", "ex": "We saw two lions at the *zoo*."}, {"id": "fruit", "en": "fruit", "say": "fruit", "az": "meyvə", "pos": "n", "ex": "Try to eat more *fruit* and vegetables."}, {"id": "dreary", "en": "dreary", "say": "dreary", "az": "darıxdırıcı", "pos": "adj", "ex": "It was a cold, *dreary* day in November."}, {"id": "keen-on", "en": "be keen on", "say": "be keen on", "az": "çox xoşlamaq", "pos": "v", "ex": "My brother *is keen on* football."}, {"id": "warning", "en": "warning", "say": "warning", "az": "xəbərdarlıq", "pos": "n", "ex": "The teacher gave him a final *warning*."}, {"id": "memory", "en": "memory", "say": "memory", "az": "yaddaş", "pos": "n", "ex": "She has a very good *memory* for names."}, {"id": "cheer-up", "en": "cheer smb up", "say": "cheer somebody up", "az": "ruhlandırmaq", "pos": "v", "ex": "I bought her flowers to *cheer her up*."}, {"id": "regular", "en": "regular", "say": "regular", "az": "müntəzəm", "pos": "adj", "ex": "Take *regular* breaks when you study."}, {"id": "now", "en": "now", "say": "now", "az": "indi", "pos": "adv", "ex": "I'm busy *now*, call me later."}, {"id": "positive-side", "en": "positive side", "say": "positive side", "az": "müsbət tərəf", "pos": "n", "ex": "Try to look at the *positive side* of things."}, {"id": "differ", "en": "differ", "say": "differ", "az": "fərqlənmək", "pos": "v", "ex": "Our opinions *differ* on this question."}, {"id": "legacy", "en": "legacy", "say": "legacy", "az": "irs", "pos": "n", "ex": "The great writer left a rich *legacy*."}, {"id": "correct-v", "en": "correct (v)", "say": "correct", "az": "düzəltmək", "pos": "v", "ex": "The teacher *corrected* my mistakes."}, {"id": "correct-adj", "en": "correct (adj)", "say": "correct", "az": "düzgün", "pos": "adj", "ex": "Choose the *correct* answer."}, {"id": "racial-discr", "en": "racial discrimination", "say": "racial discrimination", "az": "irqi ayrı-seçkilik", "pos": "n", "ex": "*Racial discrimination* is against the law."}, {"id": "headache", "en": "headache", "say": "headache", "az": "baş ağrısı", "pos": "n", "ex": "I have a terrible *headache* today."}, {"id": "treaty", "en": "treaty", "say": "treaty", "az": "saziş", "pos": "n", "ex": "The two countries signed a peace *treaty*."}, {"id": "envious", "en": "envious", "say": "envious", "az": "paxıl", "pos": "adj", "ex": "He was *envious* of his friend's new car."}, {"id": "make-mind", "en": "make up one's mind", "say": "make up one's mind", "az": "qərar vermək", "pos": "v", "ex": "I can't *make up my mind* which phone to buy."}, {"id": "wing", "en": "wing", "say": "wing", "az": "qanad", "pos": "n", "ex": "The little bird hurt its *wing*."}, {"id": "fried", "en": "fried", "say": "fried", "az": "qızardılmış", "pos": "adj", "ex": "I love *fried* potatoes."}, {"id": "receive-award", "en": "receive an award", "say": "receive an award", "az": "mükafat almaq", "pos": "v", "ex": "She will *receive an award* for her research."}, {"id": "poultry", "en": "poultry", "say": "poultry", "az": "toyuq-cücə", "pos": "n", "ex": "The farmer keeps *poultry* and cows."}, {"id": "genocide", "en": "genocide", "say": "genocide", "az": "soyqırım", "pos": "n", "ex": "The museum tells the story of the *genocide* and its victims."}, {"id": "counterattack", "en": "counterattack", "say": "counterattack", "az": "əks-hücum etmək", "pos": "v", "ex": "The team waited, then *counterattacked* quickly."}, {"id": "on-average", "en": "on average", "say": "on average", "az": "ortalama", "pos": "adv", "ex": "*On average*, I sleep seven hours a night."}, {"id": "passion", "en": "passion", "say": "passion", "az": "ehtiras, həvəs", "pos": "n", "ex": "Music is her greatest *passion*."}, {"id": "accelerate", "en": "accelerate", "say": "accelerate", "az": "sürətləndirmək", "pos": "v", "ex": "The car *accelerated* on the highway."}, {"id": "strength", "en": "strength", "say": "strength", "az": "güc", "pos": "n", "ex": "You need *strength* to lift this heavy box."}, {"id": "several", "en": "several", "say": "several", "az": "bir neçə", "pos": "adv", "ex": "I've read this book *several* times."}, {"id": "donate", "en": "donate", "say": "donate", "az": "ianə vermək", "pos": "v", "ex": "They *donated* money to the children's hospital."}, {"id": "rainforest", "en": "rainforest", "say": "rainforest", "az": "yağmur ormanı", "pos": "n", "ex": "Many rare animals live in the *rainforest*."}, {"id": "lawyer", "en": "lawyer", "say": "lawyer", "az": "vəkil", "pos": "n", "ex": "My uncle works as a *lawyer*."}];
+let WORDS = [{"id": "suit-n", "en": "suit (n)", "az": "kostyum", "pos": "n", "ex": "He wore a dark suit to the job interview."}, {"id": "suit-v", "en": "suit (v)", "az": "yaraşmaq", "pos": "v", "ex": "That blue colour really suits you."}, {"id": "capital", "en": "capital", "az": "paytaxt", "pos": "n", "ex": "Baku is the capital of Azerbaijan."}, {"id": "throw-ball", "en": "throw a ball", "az": "top atmaq", "pos": "v", "ex": "The boy tried to throw a ball over the fence."}, {"id": "convenient", "en": "convenient", "az": "rahat", "pos": "adj", "ex": "The bus stop is very convenient for me."}, {"id": "cliff", "en": "cliff", "az": "qayalıq", "pos": "n", "ex": "We stood on the edge of the cliff and looked at the sea."}, {"id": "rush", "en": "rush", "az": "tələsmək", "pos": "v", "ex": "Don't rush, we have plenty of time."}, {"id": "private", "en": "private", "az": "özəl", "pos": "adj", "ex": "She goes to a private school."}, {"id": "self-worth", "en": "self-worth", "az": "özünə dəyər", "pos": "n", "ex": "Good friends help you build your self-worth."}, {"id": "dreadful", "en": "dreadful", "az": "dəhşətli", "pos": "adj", "ex": "The weather was dreadful all weekend."}, {"id": "eyebrow", "en": "eyebrow", "az": "qaş", "pos": "n", "ex": "He raised one eyebrow in surprise."}, {"id": "running-water", "en": "running water", "az": "axar su", "pos": "n", "ex": "The old village house had no running water."}, {"id": "enthusiastic", "en": "enthusiastic", "az": "həvəsli", "pos": "adj", "ex": "The students were enthusiastic about the trip."}, {"id": "ticket", "en": "ticket", "az": "bilet", "pos": "n", "ex": "I bought a ticket for the concert."}, {"id": "transmit", "en": "transmit", "az": "ötürmək", "pos": "v", "ex": "Mosquitoes can transmit diseases."}, {"id": "tell-story", "en": "tell a story", "az": "hekayə danışmaq", "pos": "v", "ex": "Grandma likes to tell a story before bedtime."}, {"id": "wallet", "en": "wallet", "az": "pul çantası", "pos": "n", "ex": "I left my wallet at home."}, {"id": "toss", "en": "toss", "az": "atmaq", "pos": "v", "ex": "He tossed a coin to decide who would start."}, {"id": "bulwark", "en": "bulwark", "az": "müdafiə divarı", "pos": "n", "ex": "The soldiers built a bulwark to protect the city."}, {"id": "glass", "en": "glass", "az": "şüşə, stəkan", "pos": "n", "ex": "Can I have a glass of water, please?"}, {"id": "regardless", "en": "regardless of", "az": "asılı olmayaraq", "pos": "adv", "ex": "Everyone can join the club, regardless of age."}, {"id": "freezing", "en": "freezing", "az": "dondurucu", "pos": "adj", "ex": "It's freezing outside, so wear a warm coat."}, {"id": "weigh", "en": "weigh", "az": "çəkmək (çəkini)", "pos": "v", "ex": "The nurse will weigh the baby every week."}, {"id": "veteran", "en": "veteran", "az": "veteran", "pos": "n", "ex": "My grandfather is a war veteran."}, {"id": "take-notice", "en": "take notice", "az": "nəzərə almaq", "pos": "v", "ex": "Nobody seemed to take notice of the warning signs."}, {"id": "aid", "en": "aid", "az": "yardım", "pos": "n", "ex": "The country sent food aid to the flood victims."}, {"id": "public", "en": "public", "az": "ictimai", "pos": "adj", "ex": "This is a public park, so everyone can use it."}, {"id": "so", "en": "so", "az": "buna görə", "pos": "adv", "ex": "It was raining, so we stayed at home."}, {"id": "retrieve", "en": "retrieve", "az": "bərpa etmək", "pos": "v", "ex": "He managed to retrieve the lost files."}, {"id": "zoo", "en": "zoo", "az": "zoopark", "pos": "n", "ex": "We saw two lions at the zoo."}, {"id": "fruit", "en": "fruit", "az": "meyvə", "pos": "n", "ex": "Try to eat more fruit and vegetables."}, {"id": "dreary", "en": "dreary", "az": "darıxdırıcı", "pos": "adj", "ex": "It was a cold, dreary day in November."}, {"id": "keen-on", "en": "be keen on", "az": "çox xoşlamaq", "pos": "v", "ex": "My brother is keen on football."}, {"id": "warning", "en": "warning", "az": "xəbərdarlıq", "pos": "n", "ex": "The teacher gave him a final warning."}, {"id": "memory", "en": "memory", "az": "yaddaş", "pos": "n", "ex": "She has a very good memory for names."}, {"id": "cheer-up", "en": "cheer smb up", "az": "ruhlandırmaq", "pos": "v", "ex": "I bought her flowers to cheer her up."}, {"id": "regular", "en": "regular", "az": "müntəzəm", "pos": "adj", "ex": "Take regular breaks when you study."}, {"id": "now", "en": "now", "az": "indi", "pos": "adv", "ex": "I'm busy now, call me later."}, {"id": "positive-side", "en": "positive side", "az": "müsbət tərəf", "pos": "n", "ex": "Try to look at the positive side of things."}, {"id": "differ", "en": "differ", "az": "fərqlənmək", "pos": "v", "ex": "Our opinions differ on this question."}, {"id": "legacy", "en": "legacy", "az": "irs", "pos": "n", "ex": "The great writer left a rich legacy."}, {"id": "correct-v", "en": "correct (v)", "az": "düzəltmək", "pos": "v", "ex": "The teacher corrected my mistakes."}, {"id": "correct-adj", "en": "correct (adj)", "az": "düzgün", "pos": "adj", "ex": "Choose the correct answer."}, {"id": "racial-discr", "en": "racial discrimination", "az": "irqi ayrı-seçkilik", "pos": "n", "ex": "Racial discrimination is against the law."}, {"id": "headache", "en": "headache", "az": "baş ağrısı", "pos": "n", "ex": "I have a terrible headache today."}, {"id": "treaty", "en": "treaty", "az": "saziş", "pos": "n", "ex": "The two countries signed a peace treaty."}, {"id": "envious", "en": "envious", "az": "paxıl", "pos": "adj", "ex": "He was envious of his friend's new car."}, {"id": "make-mind", "en": "make up one's mind", "az": "qərar vermək", "pos": "v", "ex": "I can't make up my mind which phone to buy."}, {"id": "wing", "en": "wing", "az": "qanad", "pos": "n", "ex": "The little bird hurt its wing."}, {"id": "fried", "en": "fried", "az": "qızardılmış", "pos": "adj", "ex": "I love fried potatoes."}, {"id": "receive-award", "en": "receive an award", "az": "mükafat almaq", "pos": "v", "ex": "She will receive an award for her research."}, {"id": "poultry", "en": "poultry", "az": "toyuq-cücə", "pos": "n", "ex": "The farmer keeps poultry and cows."}, {"id": "genocide", "en": "genocide", "az": "soyqırım", "pos": "n", "ex": "The museum tells the story of the genocide and its victims."}, {"id": "counterattack", "en": "counterattack", "az": "əks-hücum etmək", "pos": "v", "ex": "The team waited, then counterattacked quickly."}, {"id": "on-average", "en": "on average", "az": "ortalama", "pos": "adv", "ex": "On average, I sleep seven hours a night."}, {"id": "passion", "en": "passion", "az": "ehtiras, həvəs", "pos": "n", "ex": "Music is her greatest passion."}, {"id": "accelerate", "en": "accelerate", "az": "sürətləndirmək", "pos": "v", "ex": "The car accelerated on the highway."}, {"id": "strength", "en": "strength", "az": "güc", "pos": "n", "ex": "You need strength to lift this heavy box."}, {"id": "several", "en": "several", "az": "bir neçə", "pos": "adv", "ex": "I've read this book several times."}, {"id": "donate", "en": "donate", "az": "ianə vermək", "pos": "v", "ex": "They donated money to the children's hospital."}, {"id": "rainforest", "en": "rainforest", "az": "yağmur ormanı", "pos": "n", "ex": "Many rare animals live in the rainforest."}, {"id": "lawyer", "en": "lawyer", "az": "vəkil", "pos": "n", "ex": "My uncle works as a lawyer."}];
 const CONFLICTS = {"toss": ["throw-ball"], "throw-ball": ["toss"]};
-const GRAMMAR = [];
+let GRAMMAR = [];
+const DEFAULT_TEXTS = { title: "Homework 11 class", home_sub: "Bölməni seç və başla.", vocab_title: "Vocabulary", vocab_sub: "Word exam, 40 söz", vocab_count: 40, grammar_title: "Grammar Test", grammar_sub: "" };
+let TEXTS = Object.assign({}, DEFAULT_TEXTS);
+const sayOf = en => String(en).replace(/\([^)]*\)/g, "").replace(/\bsmb\b/g, "somebody").replace(/\bsth\b/g, "something").trim();
+function highlight(ex, en){
+  const s = esc(ex);
+  if (/\*.+?\*/.test(ex)) return s.replace(/\*(.+?)\*/g, "<mark>$1</mark>");
+  const w = sayOf(en).split(/\s+/).filter(x => x.length > 2 && !["somebody","something","one's"].includes(x.toLowerCase()))[0] || sayOf(en);
+  const re = new RegExp("\\b(" + w.slice(0, Math.max(3, w.length - 2)).replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "[a-z]*)", "i");
+  return s.replace(re, "<mark>$1</mark>");
+}
+function applyContent(c){
+  if (!c) return;
+  if (Array.isArray(c.words) && c.words.length >= 5) WORDS = c.words;
+  if (Array.isArray(c.grammar)) GRAMMAR = c.grammar;
+  TEXTS = Object.assign({}, DEFAULT_TEXTS, c.texts || {});
+  applyTexts();
+}
+function applyTexts(){
+  document.querySelectorAll(".js-title").forEach(el => el.textContent = TEXTS.title);
+  document.title = TEXTS.title;
+  $("#h-sub").textContent = TEXTS.home_sub;
+  $("#h-vt").textContent = TEXTS.vocab_title;
+  $("#h-vs").textContent = TEXTS.vocab_sub;
+  $("#h-gt").textContent = TEXTS.grammar_title;
+  $("#h-gs").textContent = TEXTS.grammar_sub || (GRAMMAR.length ? `${GRAMMAR.length} sual` : "Tezliklə");
+}
+async function loadContent(){
+  applyContent(store.get("hw11_content"));
+  try { const r = await api("content"); store.set("hw11_content", r); applyContent(r); } catch (e){}
+}
 
 const KEY = "hw11_student";
 const $ = s => document.querySelector(s);
@@ -311,7 +397,8 @@ function fmtDate(ts){ const d = new Date(ts); const z = n => String(n).padStart(
 let lastScreen = "s-register";
 function show(id){
   document.querySelectorAll(".screen").forEach(el => el.hidden = el.id !== id);
-  if (!["s-tlogin","s-teacher"].includes(id)) lastScreen = id;
+  if (!["s-tlogin","s-teacher","s-editor"].includes(id)) lastScreen = id;
+  const sig = document.querySelector(".sig"); if (sig) sig.hidden = !["s-register","s-home"].includes(id);
   window.scrollTo(0, 0);
 }
 
@@ -385,7 +472,7 @@ function goHome(){
   const s = store.get(KEY);
   if (!s) return show("s-register");
   $("#h-who").textContent = `${s.name} ${s.surname}, ${s.group}`;
-  $("#h-gcount").textContent = GRAMMAR.length ? `${GRAMMAR.length} sual` : "Tezliklə";
+  applyTexts();
   show("s-home");
 }
 $("#h-switch").addEventListener("click", () => {
@@ -410,12 +497,14 @@ function confirmBox(title, text, okText, cancelText){
 let V = null;
 function buildOptions(w){
   const bad = CONFLICTS[w.id] || [];
-  const pool = WORDS.filter(x => x.pos === w.pos && x.id !== w.id && x.az !== w.az && !bad.includes(x.id));
-  return shuffle(shuffle(pool).slice(0, 4).map(x => x.az).concat(w.az));
+  const ok = x => x.id !== w.id && x.az !== w.az && !bad.includes(x.id);
+  let picks = shuffle(WORDS.filter(x => x.pos === w.pos && ok(x))).slice(0, 4).map(x => x.az);
+  if (picks.length < 4) picks = picks.concat(shuffle(WORDS.filter(x => x.pos !== w.pos && ok(x) && !picks.includes(x.az))).slice(0, 4 - picks.length).map(x => x.az));
+  return shuffle([...new Set(picks)].concat(w.az));
 }
 async function startVocab(){
   if (!(await checkStatus())) return;
-  const n = Math.min(CONFIG.VOCAB_COUNT, WORDS.length);
+  const n = Math.min(Number(TEXTS.vocab_count) || 40, WORDS.length);
   V = { items: shuffle(WORDS).slice(0, n).map(w => ({ w, opts: buildOptions(w), chosen: null })), i: 0 };
   show("s-vocab"); renderVocab();
 }
@@ -426,7 +515,7 @@ function renderVocab(){
   $("#v-word").textContent = it.w.en;
   $("#v-feedback").hidden = true;
   $("#v-opts").innerHTML = it.opts.map((o, k) => `<button class="opt" type="button" data-k="${k}"><span class="k">${"ABCDE"[k]}</span><span>${esc(o)}</span></button>`).join("");
-  speak(it.w.say);
+  speak(sayOf(it.w.en));
 }
 $("#v-opts").addEventListener("click", e => {
   const b = e.target.closest(".opt"); if (!b || !V) return;
@@ -440,12 +529,12 @@ $("#v-opts").addEventListener("click", e => {
     b.classList.add("is-bad");
     btns[it.opts.indexOf(it.w.az)].classList.add("is-ok");
     $("#v-correct").textContent = it.w.az;
-    $("#v-ex").innerHTML = esc(it.w.ex).replace(/\*(.+?)\*/g, "<mark>$1</mark>");
+    $("#v-ex").innerHTML = highlight(it.w.ex, it.w.en);
     $("#v-feedback").hidden = false;
     $("#v-feedback").scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 });
-$("#v-speak").addEventListener("click", () => V && speak(V.items[V.i].w.say));
+$("#v-speak").addEventListener("click", () => V && speak(sayOf(V.items[V.i].w.en)));
 $("#v-ex-speak").addEventListener("click", () => V && speak(V.items[V.i].w.ex.replace(/\*/g, ""), 0.9));
 $("#v-next").addEventListener("click", nextVocab);
 function nextVocab(){
@@ -564,7 +653,7 @@ $("#t-form").addEventListener("submit", async e => {
   e.preventDefault();
   const pw = $("#t-pass").value; $("#t-err").textContent = "";
   $("#t-btn").disabled = true;
-  try { await loadTeacher(pw); sessionStorage.setItem("hw11_t", pw); show("s-teacher"); }
+  try { await loadTeacher(pw); store.set("hw11_t", pw); show("s-teacher"); }
   catch (ex){ $("#t-err").textContent = ex.code === "no_api" ? "Server qoşulmayıb: index.html faylında API_URL boşdur." : ex.code === "wrong_password" ? "Şifrə düz deyil." : "Yükləmək alınmadı. İnterneti yoxla."; }
   $("#t-btn").disabled = false;
 });
@@ -621,6 +710,86 @@ $("#t-list").addEventListener("click", async e => {
   catch (ex){ b.disabled = false; alert("Dəyişmək alınmadı. İnterneti yoxla."); }
 });
 
+$("#t-logout").addEventListener("click", () => { store.del("hw11_t"); T = null; $("#t-pass").value = ""; show("s-tlogin"); });
+
+/* ---------- Redaktə ---------- */
+let E = null;
+function toast(msg){ const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => t.hidden = true, 3500); }
+const POS = [["n","isim"],["v","feil"],["adj","sifət"],["adv","zərf, digər"]];
+const LET = "ABCDE";
+$("#t-edit").addEventListener("click", openEditor);
+function openEditor(){
+  E = { texts: Object.assign({}, TEXTS), words: WORDS.map(w => Object.assign({}, w)), grammar: GRAMMAR.map(g => ({ q: g.q, o: g.o.slice(), a: g.a })), dirty: false };
+  const map = { "e-title":"title", "e-sub":"home_sub", "e-vt":"vocab_title", "e-vs":"vocab_sub", "e-vc":"vocab_count", "e-gt":"grammar_title", "e-gs":"grammar_sub" };
+  Object.entries(map).forEach(([id, k]) => { const el = $("#"+id); el.value = E.texts[k] ?? ""; el.oninput = () => { E.texts[k] = id === "e-vc" ? Number(el.value) : el.value; E.dirty = true; }; });
+  $("#e-wsearch").value = "";
+  renderWords(); renderGram(); show("s-editor");
+}
+function renderWords(){
+  const q = $("#e-wsearch").value.trim().toLowerCase();
+  $("#e-wcount").textContent = `(${E.words.length})`;
+  $("#e-words").innerHTML = E.words.map((w, i) => (!q || (w.en + " " + w.az).toLowerCase().includes(q)) ? `<div class="ed-row" data-i="${i}">
+    <div class="grid"><div><label>İngiliscə</label><input data-f="en" value="${esc(w.en)}" maxlength="60" autocapitalize="none"></div>
+    <div><label>Tərcümə</label><input data-f="az" value="${esc(w.az)}" maxlength="60"></div></div>
+    <label>Nümunə cümlə (söz avtomatik vurğulanır)</label><textarea data-f="ex" maxlength="200">${esc(w.ex || "")}</textarea>
+    <div class="foot"><select data-f="pos" aria-label="Nitq hissəsi" style="width:auto">${POS.map(([v, l]) => `<option value="${v}" ${w.pos === v ? "selected" : ""}>${l}</option>`).join("")}</select>
+    <button class="mini danger" data-del="w" type="button" style="margin:0">Sil</button></div></div>` : "").join("");
+}
+function renderGram(){
+  $("#e-gcount").textContent = `(${E.grammar.length})`;
+  $("#e-grammar").innerHTML = E.grammar.length ? E.grammar.map((g, i) => `<div class="ed-row" data-g="${i}">
+    <label>Sual ${i + 1}</label><textarea data-f="q" maxlength="300">${esc(g.q)}</textarea>
+    <div class="grid">${[0,1,2,3,4].map(k => `<div><label>${LET[k]} variantı${k > 3 ? " (istəyə görə)" : ""}</label><input data-o="${k}" value="${esc(g.o[k] || "")}" maxlength="120"></div>`).join("")}</div>
+    <div class="foot"><label style="margin:0">Düz cavab: <select data-f="a" style="width:auto;display:inline-block">${[0,1,2,3,4].map(k => `<option value="${k}" ${g.a === k ? "selected" : ""}>${LET[k]}</option>`).join("")}</select></label>
+    <button class="mini danger" data-del="g" type="button" style="margin:0">Sil</button></div></div>`).join("") : `<div class="empty">Hələ sual yoxdur. «Sual əlavə et» bas.</div>`;
+}
+$("#e-wsearch").addEventListener("input", renderWords);
+$("#e-words").addEventListener("input", e => { const row = e.target.closest("[data-i]"); if (!row || !e.target.dataset.f) return; E.words[+row.dataset.i][e.target.dataset.f] = e.target.value; E.dirty = true; });
+$("#e-words").addEventListener("change", e => { const row = e.target.closest("[data-i]"); if (!row || e.target.dataset.f !== "pos") return; E.words[+row.dataset.i].pos = e.target.value; E.dirty = true; });
+$("#e-grammar").addEventListener("input", e => {
+  const row = e.target.closest("[data-g]"); if (!row) return; const g = E.grammar[+row.dataset.g];
+  if (e.target.dataset.o !== undefined) g.o[+e.target.dataset.o] = e.target.value;
+  else if (e.target.dataset.f === "q") g.q = e.target.value;
+  E.dirty = true;
+});
+$("#e-grammar").addEventListener("change", e => { const row = e.target.closest("[data-g]"); if (!row || e.target.dataset.f !== "a") return; E.grammar[+row.dataset.g].a = +e.target.value; E.dirty = true; });
+document.addEventListener("click", async e => {
+  const b = e.target.closest("[data-del]"); if (!b || !E) return;
+  if (b.dataset.del === "w"){ const i = +b.closest("[data-i]").dataset.i; if (!(await confirmBox("Sözü sil", `«${E.words[i].en}» siyahıdan silinsin?`, "Sil", "Ləğv et"))) return; E.words.splice(i, 1); renderWords(); }
+  else { const i = +b.closest("[data-g]").dataset.g; if (!(await confirmBox("Sualı sil", `Sual ${i + 1} silinsin?`, "Sil", "Ləğv et"))) return; E.grammar.splice(i, 1); renderGram(); }
+  E.dirty = true;
+});
+$("#e-wadd").addEventListener("click", () => {
+  E.words.unshift({ id: "w" + Date.now().toString(36), en: "", az: "", pos: "n", ex: "" });
+  $("#e-wsearch").value = ""; renderWords(); E.dirty = true;
+  const f = $("#e-words input"); if (f) f.focus();
+});
+$("#e-gadd").addEventListener("click", () => {
+  E.grammar.push({ q: "", o: ["", "", "", ""], a: 0 }); renderGram(); E.dirty = true;
+  const rows = $("#e-grammar").querySelectorAll("textarea"); rows[rows.length - 1].focus();
+});
+$("#e-back").addEventListener("click", async () => {
+  if (E && E.dirty && !(await confirmBox("Dəyişikliklər saxlanmayıb", "Çıxsan, etdiyin dəyişikliklər itəcək.", "Çıx", "Qal"))) return;
+  E = null; show("s-teacher");
+});
+$("#e-save").addEventListener("click", async () => {
+  const words = E.words.map(w => ({ id: w.id, en: w.en.trim(), az: w.az.trim(), pos: w.pos, ex: (w.ex || "").trim() }));
+  const badW = words.findIndex(w => !w.en || !w.az);
+  if (badW > -1){ $("#e-wsearch").value = ""; renderWords(); toast("Hər sözün ingiliscəsi və tərcüməsi yazılmalıdır."); const r = $("#e-words").children[badW]; if (r) r.scrollIntoView({ block: "center" }); return; }
+  if (words.length < 5) return toast("Ən azı 5 söz olmalıdır.");
+  const grammar = E.grammar.map(g => { const o = g.o.map(x => (x || "").trim()); while (o.length && !o[o.length - 1]) o.pop(); return { q: g.q.trim(), o, a: g.a }; });
+  const badG = grammar.findIndex(g => !g.q || g.o.length < 2 || g.o.slice(0, g.o.length).some(x => !x) || g.a >= g.o.length);
+  if (badG > -1){ toast(`Sual ${badG + 1}: sual, ən azı 2 variant yazılmalı və düz cavab boş variant olmamalıdır.`); const r = $("#e-grammar").children[badG]; if (r) r.scrollIntoView({ block: "center" }); return; }
+  const texts = Object.assign({}, E.texts, { vocab_count: Math.max(5, Math.min(200, Number(E.texts.vocab_count) || 40)) });
+  const btn = $("#e-save"); btn.disabled = true; btn.textContent = "Saxlanılır...";
+  try {
+    await api("save_content", { password: T.pw, texts, words, grammar });
+    const c = { texts, words, grammar }; store.set("hw11_content", c); applyContent(c);
+    E.dirty = false; toast("Yadda saxlandı. Şagirdlər səhifəni açanda yeni versiyanı görəcək.");
+  } catch (ex){ toast(ex.code === "wrong_password" ? "Şifrə dəyişib, paneldən çıxıb yenidən daxil ol." : "Saxlamaq alınmadı. İnterneti yoxla və yenidən bas."); }
+  btn.disabled = false; btn.textContent = "Yadda saxla";
+});
+
 /* ---------- Naviqasiya ---------- */
 document.addEventListener("click", e => {
   const b = e.target.closest("[data-go]"); if (!b) return;
@@ -632,11 +801,15 @@ document.addEventListener("click", e => {
   else if (to === "teacher") openTeacher();
 });
 async function openTeacher(){
-  const pw = sessionStorage.getItem("hw11_t");
-  if (pw){ try { await loadTeacher(pw); show("s-teacher"); return; } catch (e){} }
+  const pw = store.get("hw11_t");
+  if (pw){
+    show("s-teacher"); $("#t-list").innerHTML = `<div class="empty">Yüklənir...</div>`;
+    try { await loadTeacher(pw); return; } catch (e){ if (e.code !== "wrong_password"){ $("#t-list").innerHTML = `<div class="empty">Yükləmək alınmadı. İnterneti yoxla və «Yenilə» bas.</div>`; T = T || { pw, students: [], results: [] }; return; } store.del("hw11_t"); }
+  }
   show("s-tlogin");
 }
 function boot(){
+  loadContent();
   if (location.hash === "#muellim") return openTeacher();
   const s = store.get(KEY);
   if (!s) return show("s-register");
